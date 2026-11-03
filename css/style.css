@@ -199,3 +199,171 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #f5c242;
 }
+
+/* ==========================================================================
+   16-BIT SOLARPUNK LOGIN SCREEN (Matching User Reference Image)
+   ========================================================================== */
+.login-scene-wrapper {
+  background-image: url('../assets/ui/login_bg_clean.png?v=1');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  box-shadow: inset 0 0 90px rgba(0, 0, 0, 0.45);
+}
+
+/* Subtle, light floating & breathing animation on the top FUTURE SHARDS logo */
+@keyframes logoFloatSubtle {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 8px rgba(46, 213, 196, 0.18));
+  }
+  50% {
+    transform: translateY(-7px) scale(1.015);
+    filter: drop-shadow(0 13px 14px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 16px rgba(245, 194, 66, 0.35));
+  }
+}
+
+.login-logo-floating {
+  animation: logoFloatSubtle 3.8s ease-in-out infinite;
+  will-change: transform, filter;
+}
+
+/* Carved Wooden / Terracotta Login Panel */
+.login-wood-panel {
+  width: 265px;
+  max-width: 90vw;
+  background: linear-gradient(180deg, #985032 0%, #804025 55%, #6d341d 100%);
+  border: 4px solid #240e06;
+  border-radius: 8px;
+  box-shadow:
+    inset 0 3px 0 #cf7d57,
+    inset 0 -4px 0 #471d0d,
+    inset 3px 0 0 #b56542,
+    inset -3px 0 0 #592613,
+    0 12px 28px rgba(0, 0, 0, 0.85);
+  padding-top: 10px;
+}
+
+/* Top Carved "LOGIN" Header Plaque */
+.login-header-plaque {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, #8f472a 0%, #683019 100%);
+  border: 3px solid #240e06;
+  border-radius: 5px;
+  padding: 5px 22px 4px;
+  color: #fff5dc;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-shadow: 0 2px 0 #240e06;
+  box-shadow:
+    inset 0 2px 0 #c97852,
+    inset 0 -2px 0 #421a0b,
+    0 4px 8px rgba(0, 0, 0, 0.65);
+}
+
+/* Carved Corner Ornaments matching the reference box */
+.login-corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: linear-gradient(135deg, #c97853 0%, #854125 100%);
+  border: 2.5px solid #240e06;
+  box-shadow: inset 0 1px 0 #e69d7a;
+  border-radius: 3px;
+  pointer-events: none;
+}
+.login-corner.tl { top: -5px; left: -5px; }
+.login-corner.tr { top: -5px; right: -5px; }
+.login-corner.bl { bottom: -5px; left: -5px; }
+.login-corner.br { bottom: -5px; right: -5px; }
+
+/* Recessed Dark-Wood Username Input */
+.login-username-input {
+  width: 100%;
+  padding: 10px 12px;
+  background: #4e2313;
+  border: 3px solid #240e06;
+  border-radius: 5px;
+  color: #fff7e6;
+  font-size: 11px;
+  box-shadow:
+    inset 0 3px 6px rgba(0, 0, 0, 0.75),
+    0 1.5px 0 #b86b48;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  user-select: text;
+}
+
+.login-username-input::placeholder {
+  color: rgba(255, 235, 205, 0.45);
+}
+
+.login-username-input:focus {
+  border-color: #f5c242;
+  background: #421c0e;
+  box-shadow:
+    inset 0 3px 6px rgba(0, 0, 0, 0.8),
+    0 0 10px rgba(245, 194, 66, 0.45);
+}
+
+/* 16-Bit Emerald Green "ENTER" Button */
+.login-enter-btn {
+  min-width: 136px;
+  padding: 9px 22px 8px;
+  background: linear-gradient(180deg, #4ec95b 0%, #2fa83e 55%, #238530 100%);
+  border: 3px solid #162e16;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 0 #143d19;
+  box-shadow:
+    inset 0 2px 0 #8cf096,
+    inset 0 -3px 0 #195e22,
+    0 0 0 2px #e8d2a6,
+    0 5px 10px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  transition: transform 0.1s ease, filter 0.15s ease;
+}
+
+.login-enter-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.login-enter-btn:active {
+  transform: translateY(2px);
+  box-shadow:
+    inset 0 2px 0 #2fa83e,
+    0 0 0 2px #e8d2a6,
+    0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Ambient Bioluminescent Spores / Fireflies */
+.login-spores .spore {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #5ef2e4;
+  box-shadow: 0 0 8px #2ed5c4, 0 0 14px #2ed5c4;
+  opacity: 0.75;
+  animation: sporeDrift 5s ease-in-out infinite alternate;
+}
+
+.login-spores .s1 { top: 24%; left: 16%; animation-duration: 4.2s; }
+.login-spores .s2 { top: 38%; left: 27%; animation-duration: 5.5s; animation-delay: 0.7s; }
+.login-spores .s3 { top: 52%; left: 22%; animation-duration: 4.8s; animation-delay: 1.4s; }
+.login-spores .s4 { top: 64%; right: 12%; animation-duration: 3.9s; animation-delay: 0.4s; }
+.login-spores .s5 { top: 70%; right: 9%; animation-duration: 5.1s; animation-delay: 1.1s; }
+.login-spores .s6 { top: 32%; right: 26%; animation-duration: 6.0s; animation-delay: 1.9s; background: #fde047; box-shadow: 0 0 8px #f5c242; }
+
+@keyframes sporeDrift {
+  0%   { transform: translate(0, 0) scale(0.85); opacity: 0.35; }
+  50%  { opacity: 0.95; }
+  100% { transform: translate(6px, -10px) scale(1.2); opacity: 0.55; }
+}

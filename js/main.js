@@ -39,19 +39,46 @@ window.addEventListener("load", () => {
     updateHUDOnly();
   }, 1000);
 
-  // Start Expedition button on Login Overlay
-  document.getElementById("btnStartGame").addEventListener("click", () => {
-    const nameVal = document.getElementById("inputPlayerName").value.trim();
-    if (nameVal) state.playerName = nameVal;
-    if (document.getElementById("chkStarterKit").checked) {
+  // Stateless Username-only Login on Login Overlay (Enter button or Enter key)
+  const handleLoginSubmit = () => {
+    const overlay = document.getElementById("loginOverlay");
+    if (!overlay || overlay.classList.contains("hidden")) return;
+    const inputEl = document.getElementById("inputPlayerName");
+    const nameVal = inputEl ? inputEl.value.trim() : "";
+    state.playerName = nameVal || "Aruã Tapajó";
+
+    const chkKit = document.getElementById("chkStarterKit");
+    if (!chkKit || chkKit.checked) {
       addItem("mat_01", 4);
       addItem("mat_02", 3);
       addItem("proc_03", 4);
     }
-    document.getElementById("loginOverlay").classList.add("hidden");
+
+    overlay.classList.add("hidden");
     playSfx("tech");
-    showToast(`Expedição Iniciada, ${state.playerName}!`, "Segure WASD/Setas para andar livremente ou clique no cenário. Pressione [Espaço] perto de recursos!");
-  });
+    updateAllUI();
+    showToast(`Bem-vindo(a), ${state.playerName}!`, "Segure WASD/Setas para andar livremente ou clique no cenário. Pressione [Espaço] perto de recursos!");
+  };
+
+  document.getElementById("btnStartGame").addEventListener("click", handleLoginSubmit);
+  const loginForm = document.getElementById("loginForm");
+  if (loginForm) {
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      handleLoginSubmit();
+    });
+  }
+  const inputPlayerName = document.getElementById("inputPlayerName");
+  if (inputPlayerName) {
+    inputPlayerName.focus();
+    inputPlayerName.select();
+    inputPlayerName.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        handleLoginSubmit();
+      }
+    });
+  }
 
   // Hotbar mode buttons
   document.querySelectorAll(".hotbar-btn").forEach(btn => {

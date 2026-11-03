@@ -2,6 +2,13 @@
 
 Todas as modificações significativas neste projeto são documentadas neste arquivo e nos commits do GitHub.
 
+## [v0.5.0] — 2026-11-03
+### Adicionado
+- **Nova Tela de Login 16-Bit Solarpunk Tapajônico ([`index.html`](index.html), [`css/style.css`](css/style.css), [`js/main.js`](js/main.js), [`assets/ui/`](assets/ui/))**:
+  - Cenário ilustrado 16-bit de pôr do sol no Rio Tapajós (`assets/ui/login_bg_clean.png`) com o monumento do Vaso de Cariátides gigante, palafitas com placas solares, aerogeradores, barco a vela solar e o protagonista no trapiche.
+  - Logo **FUTURE SHARDS** recortada em alta definição (`assets/ui/future_shards_logo.png`) com cipós e sapos Muiraquitã, equipada com animação leve contínua de flutuação e brilho solar (`@keyframes logoFloatSubtle`).
+  - Moldura entalhada em madeira/terracota (`LOGIN`) com entrada exclusiva de **USERNAME** (sem senha e sem persistência de sessão, mantendo o login *stateless* a cada acesso) e botão verde 16-bit **ENTER** + partículas bioluminescentes flutuantes.
+
 ## [v0.4.1] — 2026-11-03
 ### Corrigido
 - **Sprites de Árvores 16-Bit com Copas Completas (Sem Corte no Topo)**:
