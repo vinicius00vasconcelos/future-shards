@@ -2,6 +2,16 @@
 
 Todas as modificações significativas neste projeto são documentadas neste arquivo e nos commits do GitHub.
 
+## [v0.4.0] — 2026-11-03
+### Adicionado
+- **Spritesheet Direcional 16-Bit do Protagonista (4 Direções x 3 Frames de Caminhada)**:
+  - Gerada, recortada e integrada a folha de caminhada completa em [`future_shards_sprites_cenario_e_recursos/player_walkcycle/`](future_shards_sprites_cenario_e_recursos/player_walkcycle/) contendo **12 frames transparentes** (`down`, `up` com mochila solar iluminada e faixa vermelha, `right` e `left` com ciclo `walk1 -> idle -> walk2`).
+- **Movimentação Livre Sub-Tile a 60 FPS, Colisão Circular (*Wall-Sliding*) e Câmera *Lerp* ([`js/world.js`](js/world.js), [`js/renderer.js`](js/renderer.js), [`js/main.js`](js/main.js))**:
+  - Aplicados os padrões dos repositórios open-source `awesome-gamedev-agent-skills` (`physics-tuning`, `camera-systems`, `game-feel`) e `sprite-gen`.
+  - Movimentação contínua 360° por velocidade (`vx, vy`), aceleração/atrito suave, *Click-to-Move* fluido até qualquer ponto do cenário e colisão elíptica na base de árvores/estruturas permitindo deslizar pelas bordas e passar por trás das copas.
+- **Animações Vivas de Cenário, *Smart Proximity Highlight* e *Magnetic Loot Drops***:
+  - Brisa do Tapajós (*Wind Sway*) balançando a copa das árvores, pulso luminoso de água correndo pelos Tubos de Terracota, animação da ferramenta na mão ao coletar/escanear, *hit-shake* nos recursos, itens pulando em parábola e voando magneticamente para a mochila, textos flutuantes (`+3 Argila`, `+15 PCV`) e sons de passos por tipo de terreno (`grama`, `madeira`, `água`).
+
 ## [v0.3.0] — 2026-11-03
 ### Corrigido & Adicionado
 - **Restauração Integral dos 90 Sprites 16-Bit a partir dos Cards HD Originais**:

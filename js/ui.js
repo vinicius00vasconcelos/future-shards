@@ -140,7 +140,7 @@ function updateHUDOnly() {
     }
   }
   const coords = document.getElementById("txtCoords");
-  if (coords) coords.textContent = `X:${p.x} Y:${p.y}`;
+  if (coords) coords.textContent = `X:${Math.floor(p.x)} Y:${Math.floor(p.y)}`;
 }
 
 // Renders the 7-Slot Wooden Item Hotbar at the bottom of the gameplay screen + Floating Craft Preview (Matching Image 2!)

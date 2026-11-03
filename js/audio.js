@@ -1,5 +1,5 @@
 // ============================================================================
-// FUTURE SHARDS — SYNTHESIZED 16-BIT WEB AUDIO ENGINE
+// FUTURE SHARDS — SYNTHESIZED 16-BIT WEB AUDIO ENGINE (WITH FOOTSTEP SFX)
 // ============================================================================
 
 let audioCtx = null;
@@ -51,7 +51,30 @@ function playSfx(type) {
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.32);
       osc.start(now);
       osc.stop(now + 0.32);
+    } else if (type === "step_grass") {
+      osc.type = "triangle";
+      osc.frequency.setValueAtTime(135 + Math.random() * 25, now);
+      osc.frequency.exponentialRampToValueAtTime(65, now + 0.045);
+      gain.gain.setValueAtTime(0.035, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+      osc.start(now);
+      osc.stop(now + 0.05);
+    } else if (type === "step_wood") {
+      osc.type = "square";
+      osc.frequency.setValueAtTime(190 + Math.random() * 30, now);
+      osc.frequency.exponentialRampToValueAtTime(95, now + 0.04);
+      gain.gain.setValueAtTime(0.035, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.045);
+      osc.start(now);
+      osc.stop(now + 0.045);
+    } else if (type === "step_water") {
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(240 + Math.random() * 60, now);
+      osc.frequency.exponentialRampToValueAtTime(380, now + 0.06);
+      gain.gain.setValueAtTime(0.04, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.065);
+      osc.start(now);
+      osc.stop(now + 0.065);
     }
   } catch (e) {}
 }
-
