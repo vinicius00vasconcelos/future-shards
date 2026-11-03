@@ -24,8 +24,8 @@ const AssetLibrary = {
 
   init() {
     // Load the master 9x5 transparent PNG atlases directly from the asset folders
-    this.itemsAtlasImg.src = `${ITEMS_BASE_DIR}/spritesheet_45_itens_transparente.png`;
-    this.sceneryAtlasImg.src = `${SCENERY_BASE_DIR}/spritesheet_cenario_45_transparente.png`;
+    this.itemsAtlasImg.src = `${ITEMS_BASE_DIR}/spritesheet_45_itens_transparente.png?v=5`;
+    this.sceneryAtlasImg.src = `${SCENERY_BASE_DIR}/spritesheet_cenario_45_transparente.png?v=5`;
 
     // Load 4-direction 3-frame Player Walkcycle Sheet & Individual Frames
     this.playerSheetImg.src = `${SCENERY_BASE_DIR}/player_walkcycle/arua_walkcycle_sheet.png`;

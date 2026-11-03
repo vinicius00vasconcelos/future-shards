@@ -15,10 +15,10 @@ let lastFrameTime = performance.now();
 const OBJECT_SCALES = {
   // World Objects
   stilt_hut:      { w: 3.3, h: 3.1, anchorY: 0.72 },
-  samauma_tree:   { w: 2.8, h: 3.0, anchorY: 0.78, sway: 0.045 },
-  rubber_tree:    { w: 2.2, h: 2.4, anchorY: 0.78, sway: 0.055 },
-  andiroba_tree:  { w: 2.2, h: 2.4, anchorY: 0.78, sway: 0.055 },
-  acai_tree:      { w: 2.0, h: 2.3, anchorY: 0.78, sway: 0.070 },
+  samauma_tree:   { w: 2.9, h: 3.2, anchorY: 0.90, sway: 0.045 },
+  rubber_tree:    { w: 2.3, h: 2.6, anchorY: 0.90, sway: 0.055 },
+  andiroba_tree:  { w: 2.3, h: 2.6, anchorY: 0.90, sway: 0.055 },
+  acai_tree:      { w: 2.1, h: 2.5, anchorY: 0.90, sway: 0.070 },
   caryatid_altar: { w: 2.1, h: 2.2, anchorY: 0.75 },
   dredge_wreck:   { w: 2.1, h: 1.9, anchorY: 0.72 },
   diesel_wreck:   { w: 1.6, h: 1.5, anchorY: 0.70 },

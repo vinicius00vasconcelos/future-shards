@@ -136,9 +136,9 @@ const SCENERY_ASSETS = [
 ];
 
 SCENERY_ASSETS.forEach(sa => {
-  const fileName = `${sa.id}_${sa.slug}.png`;
+  const fileName = `${sa.id}_${sa.slug}.png?v=5`;
   sa.spriteHd = `${SCENERY_BASE_DIR}/cenario_hd_transparentes/${fileName}`;
-  sa.cardHd = `${SCENERY_BASE_DIR}/cenario_hd_cards/${fileName}`;
+  sa.cardHd = `${SCENERY_BASE_DIR}/cenario_hd_cards/${sa.id}_${sa.slug}.png`;
   if (sa.isTile) {
     sa.sprite32 = `${SCENERY_BASE_DIR}/tiles_terreno_32x32/${fileName}`;
     sa.sprite128 = `${SCENERY_BASE_DIR}/tiles_terreno_128x128/${fileName}`;

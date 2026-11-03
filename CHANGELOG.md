@@ -2,6 +2,12 @@
 
 Todas as modificações significativas neste projeto são documentadas neste arquivo e nos commits do GitHub.
 
+## [v0.4.1] — 2026-11-03
+### Corrigido
+- **Sprites de Árvores 16-Bit com Copas Completas (Sem Corte no Topo)**:
+  - **Diagnóstico**: Na folha original `spritesheet_cenario_e_recursos_hd.jpg`, os cards `node_06_seringueira_com_tigela.png`, `node_07_arvore_andiroba_jenipapo.png` e `node_08_samauma_gigante_viva.png` foram desenhados com zoom no tronco/sapopembas, cortando o topo das copas na linha divisória superior da grade.
+  - **Solução**: Gerada e recortada nova folha 16-bit com as 4 árvores amazônicas completas de cima a baixo (`node_05_acaizeiro_frutifero.png`, `node_06_seringueira_com_tigela.png`, `node_07_arvore_andiroba_jenipapo.png` e `node_08_samauma_gigante_viva.png`), atualizando `cenario_hd_transparentes/`, `objetos_mundo_32x32/`, o atlas `spritesheet_cenario_45_transparente.png` e o ponto de ancoragem das raízes (`anchorY: 0.90`) em [`js/renderer.js`](js/renderer.js).
+
 ## [v0.4.0] — 2026-11-03
 ### Adicionado
 - **Spritesheet Direcional 16-Bit do Protagonista (4 Direções x 3 Frames de Caminhada)**:
