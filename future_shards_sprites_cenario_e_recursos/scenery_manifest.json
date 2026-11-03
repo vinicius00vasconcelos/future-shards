@@ -1,0 +1,817 @@
+{
+  "game": "Future Shards",
+  "pack": "Cenário, Terrenos, Recursos, Construções e Entidades",
+  "total_assets": 45,
+  "assets": [
+    {
+      "index": 1,
+      "id": "tile_01",
+      "slug": "agua_profunda_tapajos",
+      "name": "Água Profunda do Tapajós (Turquesa)",
+      "category": "1 - Terreno (Tile)",
+      "hd_sprite": "cenario_hd_transparentes/tile_01_agua_profunda_tapajos.png",
+      "card_sprite": "cenario_hd_cards/tile_01_agua_profunda_tapajos.png",
+      "pixel_32x32": "tiles_terreno_32x32/tile_01_agua_profunda_tapajos.png",
+      "atlas_grid": {
+        "col": 0,
+        "row": 0,
+        "x": 0,
+        "y": 0,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 2,
+      "id": "tile_02",
+      "slug": "agua_barrenta_amazonas",
+      "name": "Água Barrenta do Amazonas",
+      "category": "1 - Terreno (Tile)",
+      "hd_sprite": "cenario_hd_transparentes/tile_02_agua_barrenta_amazonas.png",
+      "card_sprite": "cenario_hd_cards/tile_02_agua_barrenta_amazonas.png",
+      "pixel_32x32": "tiles_terreno_32x32/tile_02_agua_barrenta_amazonas.png",
+      "atlas_grid": {
+        "col": 1,
+        "row": 0,
+        "x": 128,
+        "y": 0,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 3,
+      "id": "tile_03",
+      "slug": "agua_rasa_igapo",
+      "name": "Água Rasa de Igapó Alagado",
+      "category": "1 - Terreno (Tile)",
+      "hd_sprite": "cenario_hd_transparentes/tile_03_agua_rasa_igapo.png",
+      "card_sprite": "cenario_hd_cards/tile_03_agua_rasa_igapo.png",
+      "pixel_32x32": "tiles_terreno_32x32/tile_03_agua_rasa_igapo.png",
+      "atlas_grid": {
+        "col": 2,
+        "row": 0,
+        "x": 256,
+        "y": 0,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 4,
+      "id": "tile_04",
+      "slug": "praia_areia_alter",
+      "name": "Areia Branca de Praia (Vazante)",
+      "category": "1 - Terreno (Tile)",
+      "hd_sprite": "cenario_hd_transparentes/tile_04_praia_areia_alter.png",
+      "card_sprite": "cenario_hd_cards/tile_04_praia_areia_alter.png",
+      "pixel_32x32": "tiles_terreno_32x32/tile_04_praia_areia_alter.png",
+      "atlas_grid": {
+        "col": 3,
+        "row": 0,
+        "x": 384,
+        "y": 0,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 5,
+      "id": "tile_05",
+      "slug": "solo_varzea_grama",
+      "name": "Solo Úmido e Grama de Várzea",
+      "category": "1 - Terreno (Tile)",
+      "hd_sprite": "cenario_hd_transparentes/tile_05_solo_varzea_grama.png",
+      "card_sprite": "cenario_hd_cards/tile_05_solo_varzea_grama.png",
+      "pixel_32x32": "tiles_terreno_32x32/tile_05_solo_varzea_grama.png",
+      "atlas_grid": {
+        "col": 4,
+        "row": 0,
+        "x": 512,
+        "y": 0,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 6,
+      "id": "tile_06",
+      "slug": "solo_cinza_degradado",
+      "name": "Solo Cinza Degradado (Queimada)",
+      "category": "1 - Terreno (Tile)",
+      "hd_sprite": "cenario_hd_transparentes/tile_06_solo_cinza_degradado.png",
+      "card_sprite": "cenario_hd_cards/tile_06_solo_cinza_degradado.png",
+      "pixel_32x32": "tiles_terreno_32x32/tile_06_solo_cinza_degradado.png",
+      "atlas_grid": {
+        "col": 5,
+        "row": 0,
+        "x": 640,
+        "y": 0,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 7,
+      "id": "tile_07",
+      "slug": "solo_terra_preta_fertil",
+      "name": "Solo de Terra Preta de Índio",
+      "category": "1 - Terreno (Tile)",
+      "hd_sprite": "cenario_hd_transparentes/tile_07_solo_terra_preta_fertil.png",
+      "card_sprite": "cenario_hd_cards/tile_07_solo_terra_preta_fertil.png",
+      "pixel_32x32": "tiles_terreno_32x32/tile_07_solo_terra_preta_fertil.png",
+      "atlas_grid": {
+        "col": 6,
+        "row": 0,
+        "x": 768,
+        "y": 0,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 8,
+      "id": "tile_08",
+      "slug": "piso_palafita_madeira",
+      "name": "Piso de Palafita e Ponte de Madeira",
+      "category": "1 - Terreno (Tile)",
+      "hd_sprite": "cenario_hd_transparentes/tile_08_piso_palafita_madeira.png",
+      "card_sprite": "cenario_hd_cards/tile_08_piso_palafita_madeira.png",
+      "pixel_32x32": "tiles_terreno_32x32/tile_08_piso_palafita_madeira.png",
+      "atlas_grid": {
+        "col": 7,
+        "row": 0,
+        "x": 896,
+        "y": 0,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 9,
+      "id": "tile_09",
+      "slug": "tubo_terracota_e_cabo",
+      "name": "Tubo de Irrigação e Cabo Elétrico",
+      "category": "1 - Terreno (Tile)",
+      "hd_sprite": "cenario_hd_transparentes/tile_09_tubo_terracota_e_cabo.png",
+      "card_sprite": "cenario_hd_cards/tile_09_tubo_terracota_e_cabo.png",
+      "pixel_32x32": "tiles_terreno_32x32/tile_09_tubo_terracota_e_cabo.png",
+      "atlas_grid": {
+        "col": 8,
+        "row": 0,
+        "x": 1024,
+        "y": 0,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 10,
+      "id": "node_01",
+      "slug": "barranco_argila_varzea",
+      "name": "Depósito de Argila de Várzea",
+      "category": "2 - Nodo de Recurso",
+      "hd_sprite": "cenario_hd_transparentes/node_01_barranco_argila_varzea.png",
+      "card_sprite": "cenario_hd_cards/node_01_barranco_argila_varzea.png",
+      "pixel_32x32": "objetos_mundo_32x32/node_01_barranco_argila_varzea.png",
+      "atlas_grid": {
+        "col": 0,
+        "row": 1,
+        "x": 0,
+        "y": 128,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 11,
+      "id": "node_02",
+      "slug": "tronco_esponja_cauixi",
+      "name": "Tronco com Esponja de Cauixi",
+      "category": "2 - Nodo de Recurso",
+      "hd_sprite": "cenario_hd_transparentes/node_02_tronco_esponja_cauixi.png",
+      "card_sprite": "cenario_hd_cards/node_02_tronco_esponja_cauixi.png",
+      "pixel_32x32": "objetos_mundo_32x32/node_02_tronco_esponja_cauixi.png",
+      "atlas_grid": {
+        "col": 1,
+        "row": 1,
+        "x": 128,
+        "y": 128,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 12,
+      "id": "node_03",
+      "slug": "planta_fibra_curua",
+      "name": "Planta Fibrosa de Curuá",
+      "category": "2 - Nodo de Recurso",
+      "hd_sprite": "cenario_hd_transparentes/node_03_planta_fibra_curua.png",
+      "card_sprite": "cenario_hd_cards/node_03_planta_fibra_curua.png",
+      "pixel_32x32": "objetos_mundo_32x32/node_03_planta_fibra_curua.png",
+      "atlas_grid": {
+        "col": 2,
+        "row": 1,
+        "x": 256,
+        "y": 128,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 13,
+      "id": "node_04",
+      "slug": "arbusto_urucum_vermelho",
+      "name": "Arbusto de Urucum",
+      "category": "2 - Nodo de Recurso",
+      "hd_sprite": "cenario_hd_transparentes/node_04_arbusto_urucum_vermelho.png",
+      "card_sprite": "cenario_hd_cards/node_04_arbusto_urucum_vermelho.png",
+      "pixel_32x32": "objetos_mundo_32x32/node_04_arbusto_urucum_vermelho.png",
+      "atlas_grid": {
+        "col": 3,
+        "row": 1,
+        "x": 384,
+        "y": 128,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 14,
+      "id": "node_05",
+      "slug": "acaizeiro_frutifero",
+      "name": "Palmeira de Açaí",
+      "category": "2 - Nodo de Recurso",
+      "hd_sprite": "cenario_hd_transparentes/node_05_acaizeiro_frutifero.png",
+      "card_sprite": "cenario_hd_cards/node_05_acaizeiro_frutifero.png",
+      "pixel_32x32": "objetos_mundo_32x32/node_05_acaizeiro_frutifero.png",
+      "atlas_grid": {
+        "col": 4,
+        "row": 1,
+        "x": 512,
+        "y": 128,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 15,
+      "id": "node_06",
+      "slug": "seringueira_com_tigela",
+      "name": "Seringueira com Tigela de Látex",
+      "category": "2 - Nodo de Recurso",
+      "hd_sprite": "cenario_hd_transparentes/node_06_seringueira_com_tigela.png",
+      "card_sprite": "cenario_hd_cards/node_06_seringueira_com_tigela.png",
+      "pixel_32x32": "objetos_mundo_32x32/node_06_seringueira_com_tigela.png",
+      "atlas_grid": {
+        "col": 5,
+        "row": 1,
+        "x": 640,
+        "y": 128,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 16,
+      "id": "node_07",
+      "slug": "arvore_andiroba_jenipapo",
+      "name": "Árvore de Andiroba / Jenipapo",
+      "category": "2 - Nodo de Recurso",
+      "hd_sprite": "cenario_hd_transparentes/node_07_arvore_andiroba_jenipapo.png",
+      "card_sprite": "cenario_hd_cards/node_07_arvore_andiroba_jenipapo.png",
+      "pixel_32x32": "objetos_mundo_32x32/node_07_arvore_andiroba_jenipapo.png",
+      "atlas_grid": {
+        "col": 6,
+        "row": 1,
+        "x": 768,
+        "y": 128,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 17,
+      "id": "node_08",
+      "slug": "samauma_gigante_viva",
+      "name": "Samaúma Gigante da Floresta",
+      "category": "2 - Nodo de Recurso",
+      "hd_sprite": "cenario_hd_transparentes/node_08_samauma_gigante_viva.png",
+      "card_sprite": "cenario_hd_cards/node_08_samauma_gigante_viva.png",
+      "pixel_32x32": "objetos_mundo_32x32/node_08_samauma_gigante_viva.png",
+      "atlas_grid": {
+        "col": 7,
+        "row": 1,
+        "x": 896,
+        "y": 128,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 18,
+      "id": "node_09",
+      "slug": "tronco_queimado_biomassa",
+      "name": "Tronco Carbonizado / Lenha Caída",
+      "category": "2 - Nodo de Recurso",
+      "hd_sprite": "cenario_hd_transparentes/node_09_tronco_queimado_biomassa.png",
+      "card_sprite": "cenario_hd_cards/node_09_tronco_queimado_biomassa.png",
+      "pixel_32x32": "objetos_mundo_32x32/node_09_tronco_queimado_biomassa.png",
+      "atlas_grid": {
+        "col": 8,
+        "row": 1,
+        "x": 1024,
+        "y": 128,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 19,
+      "id": "poi_01",
+      "slug": "monticulo_cacos_tapajo",
+      "name": "Montículo de Cacos Tapajônicos",
+      "category": "3 - Arqueologia e Sucata",
+      "hd_sprite": "cenario_hd_transparentes/poi_01_monticulo_cacos_tapajo.png",
+      "card_sprite": "cenario_hd_cards/poi_01_monticulo_cacos_tapajo.png",
+      "pixel_32x32": "objetos_mundo_32x32/poi_01_monticulo_cacos_tapajo.png",
+      "atlas_grid": {
+        "col": 0,
+        "row": 2,
+        "x": 0,
+        "y": 256,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 20,
+      "id": "poi_02",
+      "slug": "escavacao_vaso_gargalo",
+      "name": "Vaso de Gargalo Soterrado",
+      "category": "3 - Arqueologia e Sucata",
+      "hd_sprite": "cenario_hd_transparentes/poi_02_escavacao_vaso_gargalo.png",
+      "card_sprite": "cenario_hd_cards/poi_02_escavacao_vaso_gargalo.png",
+      "pixel_32x32": "objetos_mundo_32x32/poi_02_escavacao_vaso_gargalo.png",
+      "atlas_grid": {
+        "col": 1,
+        "row": 2,
+        "x": 128,
+        "y": 256,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 21,
+      "id": "poi_03",
+      "slug": "altar_ruina_cariatides",
+      "name": "Altar Ancestral das Cariátides",
+      "category": "3 - Arqueologia e Sucata",
+      "hd_sprite": "cenario_hd_transparentes/poi_03_altar_ruina_cariatides.png",
+      "card_sprite": "cenario_hd_cards/poi_03_altar_ruina_cariatides.png",
+      "pixel_32x32": "objetos_mundo_32x32/poi_03_altar_ruina_cariatides.png",
+      "atlas_grid": {
+        "col": 2,
+        "row": 2,
+        "x": 256,
+        "y": 256,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 22,
+      "id": "poi_04",
+      "slug": "pedra_grafismos_rupestres",
+      "name": "Pedra com Grafismos Tapajó",
+      "category": "3 - Arqueologia e Sucata",
+      "hd_sprite": "cenario_hd_transparentes/poi_04_pedra_grafismos_rupestres.png",
+      "card_sprite": "cenario_hd_cards/poi_04_pedra_grafismos_rupestres.png",
+      "pixel_32x32": "objetos_mundo_32x32/poi_04_pedra_grafismos_rupestres.png",
+      "atlas_grid": {
+        "col": 3,
+        "row": 2,
+        "x": 384,
+        "y": 256,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 23,
+      "id": "poi_05",
+      "slug": "rocha_quartzo_bruto",
+      "name": "Afloramento de Quartzo Leitoso",
+      "category": "3 - Arqueologia e Sucata",
+      "hd_sprite": "cenario_hd_transparentes/poi_05_rocha_quartzo_bruto.png",
+      "card_sprite": "cenario_hd_cards/poi_05_rocha_quartzo_bruto.png",
+      "pixel_32x32": "objetos_mundo_32x32/poi_05_rocha_quartzo_bruto.png",
+      "atlas_grid": {
+        "col": 4,
+        "row": 2,
+        "x": 512,
+        "y": 256,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 24,
+      "id": "poi_06",
+      "slug": "veio_pedra_verde_jade",
+      "name": "Veio de Pedra Verde (Nefrita/Jade)",
+      "category": "3 - Arqueologia e Sucata",
+      "hd_sprite": "cenario_hd_transparentes/poi_06_veio_pedra_verde_jade.png",
+      "card_sprite": "cenario_hd_cards/poi_06_veio_pedra_verde_jade.png",
+      "pixel_32x32": "objetos_mundo_32x32/poi_06_veio_pedra_verde_jade.png",
+      "atlas_grid": {
+        "col": 5,
+        "row": 2,
+        "x": 640,
+        "y": 256,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 25,
+      "id": "poi_07",
+      "slug": "motor_diesel_enferrujado",
+      "name": "Carcaça de Motor a Diesel (Sucata)",
+      "category": "3 - Arqueologia e Sucata",
+      "hd_sprite": "cenario_hd_transparentes/poi_07_motor_diesel_enferrujado.png",
+      "card_sprite": "cenario_hd_cards/poi_07_motor_diesel_enferrujado.png",
+      "pixel_32x32": "objetos_mundo_32x32/poi_07_motor_diesel_enferrujado.png",
+      "atlas_grid": {
+        "col": 6,
+        "row": 2,
+        "x": 768,
+        "y": 256,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 26,
+      "id": "poi_08",
+      "slug": "draga_garimpo_abandonada",
+      "name": "Draga Abandonada para Reciclagem",
+      "category": "3 - Arqueologia e Sucata",
+      "hd_sprite": "cenario_hd_transparentes/poi_08_draga_garimpo_abandonada.png",
+      "card_sprite": "cenario_hd_cards/poi_08_draga_garimpo_abandonada.png",
+      "pixel_32x32": "objetos_mundo_32x32/poi_08_draga_garimpo_abandonada.png",
+      "atlas_grid": {
+        "col": 7,
+        "row": 2,
+        "x": 896,
+        "y": 256,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 27,
+      "id": "poi_09",
+      "slug": "cabana_palafita_inicial",
+      "name": "Cabana Ribeirinha em Palafita",
+      "category": "3 - Arqueologia e Sucata",
+      "hd_sprite": "cenario_hd_transparentes/poi_09_cabana_palafita_inicial.png",
+      "card_sprite": "cenario_hd_cards/poi_09_cabana_palafita_inicial.png",
+      "pixel_32x32": "objetos_mundo_32x32/poi_09_cabana_palafita_inicial.png",
+      "atlas_grid": {
+        "col": 8,
+        "row": 2,
+        "x": 1024,
+        "y": 256,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 28,
+      "id": "bld_01",
+      "slug": "bancada_rustica_varzea",
+      "name": "Bancada Rústica de Olaria e Fibras",
+      "category": "4 - Construção da Ecobase",
+      "hd_sprite": "cenario_hd_transparentes/bld_01_bancada_rustica_varzea.png",
+      "card_sprite": "cenario_hd_cards/bld_01_bancada_rustica_varzea.png",
+      "pixel_32x32": "objetos_mundo_32x32/bld_01_bancada_rustica_varzea.png",
+      "atlas_grid": {
+        "col": 0,
+        "row": 3,
+        "x": 0,
+        "y": 384,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 29,
+      "id": "bld_02",
+      "slug": "forno_ceramico_pirolise",
+      "name": "Forno Cerâmico de Pirólise",
+      "category": "4 - Construção da Ecobase",
+      "hd_sprite": "cenario_hd_transparentes/bld_02_forno_ceramico_pirolise.png",
+      "card_sprite": "cenario_hd_cards/bld_02_forno_ceramico_pirolise.png",
+      "pixel_32x32": "objetos_mundo_32x32/bld_02_forno_ceramico_pirolise.png",
+      "atlas_grid": {
+        "col": 1,
+        "row": 3,
+        "x": 128,
+        "y": 384,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 30,
+      "id": "bld_03",
+      "slug": "canteiro_agroflorestal",
+      "name": "Canteiro de Terra Preta",
+      "category": "4 - Construção da Ecobase",
+      "hd_sprite": "cenario_hd_transparentes/bld_03_canteiro_agroflorestal.png",
+      "card_sprite": "cenario_hd_cards/bld_03_canteiro_agroflorestal.png",
+      "pixel_32x32": "objetos_mundo_32x32/bld_03_canteiro_agroflorestal.png",
+      "atlas_grid": {
+        "col": 2,
+        "row": 3,
+        "x": 256,
+        "y": 384,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 31,
+      "id": "bld_04",
+      "slug": "bancada_engenharia_solarpunk",
+      "name": "Bancada de Engenharia Solarpunk",
+      "category": "4 - Construção da Ecobase",
+      "hd_sprite": "cenario_hd_transparentes/bld_04_bancada_engenharia_solarpunk.png",
+      "card_sprite": "cenario_hd_cards/bld_04_bancada_engenharia_solarpunk.png",
+      "pixel_32x32": "objetos_mundo_32x32/bld_04_bancada_engenharia_solarpunk.png",
+      "atlas_grid": {
+        "col": 3,
+        "row": 3,
+        "x": 384,
+        "y": 384,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 32,
+      "id": "bld_05",
+      "slug": "painel_solar_palafita",
+      "name": "Painel Solar Fotovoltaico",
+      "category": "4 - Construção da Ecobase",
+      "hd_sprite": "cenario_hd_transparentes/bld_05_painel_solar_palafita.png",
+      "card_sprite": "cenario_hd_cards/bld_05_painel_solar_palafita.png",
+      "pixel_32x32": "objetos_mundo_32x32/bld_05_painel_solar_palafita.png",
+      "atlas_grid": {
+        "col": 4,
+        "row": 3,
+        "x": 512,
+        "y": 384,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 33,
+      "id": "bld_06",
+      "slug": "bio_bateria_tapajonica",
+      "name": "Bio-Bateria em Vaso Tapajônico",
+      "category": "4 - Construção da Ecobase",
+      "hd_sprite": "cenario_hd_transparentes/bld_06_bio_bateria_tapajonica.png",
+      "card_sprite": "cenario_hd_cards/bld_06_bio_bateria_tapajonica.png",
+      "pixel_32x32": "objetos_mundo_32x32/bld_06_bio_bateria_tapajonica.png",
+      "atlas_grid": {
+        "col": 5,
+        "row": 3,
+        "x": 640,
+        "y": 384,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 34,
+      "id": "bld_07",
+      "slug": "condensador_neblina_cariatide",
+      "name": "Torre Condensadora de Cariátides",
+      "category": "4 - Construção da Ecobase",
+      "hd_sprite": "cenario_hd_transparentes/bld_07_condensador_neblina_cariatide.png",
+      "card_sprite": "cenario_hd_cards/bld_07_condensador_neblina_cariatide.png",
+      "pixel_32x32": "objetos_mundo_32x32/bld_07_condensador_neblina_cariatide.png",
+      "atlas_grid": {
+        "col": 6,
+        "row": 3,
+        "x": 768,
+        "y": 384,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 35,
+      "id": "bld_08",
+      "slug": "estacao_drone_beija_flor",
+      "name": "Estação de Recarga do Drone",
+      "category": "4 - Construção da Ecobase",
+      "hd_sprite": "cenario_hd_transparentes/bld_08_estacao_drone_beija_flor.png",
+      "card_sprite": "cenario_hd_cards/bld_08_estacao_drone_beija_flor.png",
+      "pixel_32x32": "objetos_mundo_32x32/bld_08_estacao_drone_beija_flor.png",
+      "atlas_grid": {
+        "col": 7,
+        "row": 3,
+        "x": 896,
+        "y": 384,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 36,
+      "id": "bld_09",
+      "slug": "microturbina_fluvial",
+      "name": "Microturbina Hidrocinética de Cheia",
+      "category": "4 - Construção da Ecobase",
+      "hd_sprite": "cenario_hd_transparentes/bld_09_microturbina_fluvial.png",
+      "card_sprite": "cenario_hd_cards/bld_09_microturbina_fluvial.png",
+      "pixel_32x32": "objetos_mundo_32x32/bld_09_microturbina_fluvial.png",
+      "atlas_grid": {
+        "col": 8,
+        "row": 3,
+        "x": 1024,
+        "y": 384,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 37,
+      "id": "ent_01",
+      "slug": "protagonista_explorador",
+      "name": "Protagonista (Cientista-Artesão)",
+      "category": "5 - Personagem / Veículo / Fauna",
+      "hd_sprite": "cenario_hd_transparentes/ent_01_protagonista_explorador.png",
+      "card_sprite": "cenario_hd_cards/ent_01_protagonista_explorador.png",
+      "pixel_32x32": "objetos_mundo_32x32/ent_01_protagonista_explorador.png",
+      "atlas_grid": {
+        "col": 0,
+        "row": 4,
+        "x": 0,
+        "y": 512,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 38,
+      "id": "ent_02",
+      "slug": "protagonista_bio_scanner",
+      "name": "Protagonista Usando Bio-Scanner",
+      "category": "5 - Personagem / Veículo / Fauna",
+      "hd_sprite": "cenario_hd_transparentes/ent_02_protagonista_bio_scanner.png",
+      "card_sprite": "cenario_hd_cards/ent_02_protagonista_bio_scanner.png",
+      "pixel_32x32": "objetos_mundo_32x32/ent_02_protagonista_bio_scanner.png",
+      "atlas_grid": {
+        "col": 1,
+        "row": 4,
+        "x": 128,
+        "y": 512,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 39,
+      "id": "ent_03",
+      "slug": "drone_polinizador_beija_flor",
+      "name": "Drone Polinizador Beija-Flor",
+      "category": "5 - Personagem / Veículo / Fauna",
+      "hd_sprite": "cenario_hd_transparentes/ent_03_drone_polinizador_beija_flor.png",
+      "card_sprite": "cenario_hd_cards/ent_03_drone_polinizador_beija_flor.png",
+      "pixel_32x32": "objetos_mundo_32x32/ent_03_drone_polinizador_beija_flor.png",
+      "atlas_grid": {
+        "col": 2,
+        "row": 4,
+        "x": 256,
+        "y": 512,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 40,
+      "id": "ent_04",
+      "slug": "canoa_rabeta_solar",
+      "name": "Canoa / Rabeta Elétrica Solar",
+      "category": "5 - Personagem / Veículo / Fauna",
+      "hd_sprite": "cenario_hd_transparentes/ent_04_canoa_rabeta_solar.png",
+      "card_sprite": "cenario_hd_cards/ent_04_canoa_rabeta_solar.png",
+      "pixel_32x32": "objetos_mundo_32x32/ent_04_canoa_rabeta_solar.png",
+      "atlas_grid": {
+        "col": 3,
+        "row": 4,
+        "x": 384,
+        "y": 512,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 41,
+      "id": "ent_05",
+      "slug": "catamara_solar_flutuante",
+      "name": "Catamarã Solar Flutuante",
+      "category": "5 - Personagem / Veículo / Fauna",
+      "hd_sprite": "cenario_hd_transparentes/ent_05_catamara_solar_flutuante.png",
+      "card_sprite": "cenario_hd_cards/ent_05_catamara_solar_flutuante.png",
+      "pixel_32x32": "objetos_mundo_32x32/ent_05_catamara_solar_flutuante.png",
+      "atlas_grid": {
+        "col": 4,
+        "row": 4,
+        "x": 512,
+        "y": 512,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 42,
+      "id": "ent_06",
+      "slug": "boto_cor_de_rosa",
+      "name": "Boto-Cor-de-Rosa do Tapajós",
+      "category": "5 - Personagem / Veículo / Fauna",
+      "hd_sprite": "cenario_hd_transparentes/ent_06_boto_cor_de_rosa.png",
+      "card_sprite": "cenario_hd_cards/ent_06_boto_cor_de_rosa.png",
+      "pixel_32x32": "objetos_mundo_32x32/ent_06_boto_cor_de_rosa.png",
+      "atlas_grid": {
+        "col": 5,
+        "row": 4,
+        "x": 640,
+        "y": 512,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 43,
+      "id": "ent_07",
+      "slug": "arara_azul_caninde",
+      "name": "Arara-Canindé / Fauna Regenerada",
+      "category": "5 - Personagem / Veículo / Fauna",
+      "hd_sprite": "cenario_hd_transparentes/ent_07_arara_azul_caninde.png",
+      "card_sprite": "cenario_hd_cards/ent_07_arara_azul_caninde.png",
+      "pixel_32x32": "objetos_mundo_32x32/ent_07_arara_azul_caninde.png",
+      "atlas_grid": {
+        "col": 6,
+        "row": 4,
+        "x": 768,
+        "y": 512,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 44,
+      "id": "ent_08",
+      "slug": "vitoria_regia_igapo",
+      "name": "Vitória-Régia Gigante do Igapó",
+      "category": "5 - Personagem / Veículo / Fauna",
+      "hd_sprite": "cenario_hd_transparentes/ent_08_vitoria_regia_igapo.png",
+      "card_sprite": "cenario_hd_cards/ent_08_vitoria_regia_igapo.png",
+      "pixel_32x32": "objetos_mundo_32x32/ent_08_vitoria_regia_igapo.png",
+      "atlas_grid": {
+        "col": 7,
+        "row": 4,
+        "x": 896,
+        "y": 512,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 45,
+      "id": "ent_09",
+      "slug": "mestre_artesao_tapajo_npc",
+      "name": "Mestre Artesão Tapajó (NPC)",
+      "category": "5 - Personagem / Veículo / Fauna",
+      "hd_sprite": "cenario_hd_transparentes/ent_09_mestre_artesao_tapajo_npc.png",
+      "card_sprite": "cenario_hd_cards/ent_09_mestre_artesao_tapajo_npc.png",
+      "pixel_32x32": "objetos_mundo_32x32/ent_09_mestre_artesao_tapajo_npc.png",
+      "atlas_grid": {
+        "col": 8,
+        "row": 4,
+        "x": 1024,
+        "y": 512,
+        "w": 128,
+        "h": 128
+      }
+    }
+  ]
+}

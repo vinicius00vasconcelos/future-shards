@@ -1,0 +1,29 @@
+FUTURE SHARDS - PACOTE DE SPRITES DE CENARIO, TERRENOS E RECURSOS (45 ASSETS)
+==============================================================================
+
+Estrutura de pastas deste arquivo ZIP:
+
+1. tiles_terreno_128x128/ e tiles_terreno_32x32/ (9 Tiles de Terreno)
+   - Texturas quadradas de piso e terreno para as 3 Zonas:
+     Agua Turquesa do Tapajos, Agua Barrenta do Amazonas, Igapo Alagado,
+     Praia de Areia (Vazante), Grama de Varzea, Solo Cinza Degradado (Queimada),
+     Solo de Terra Preta de Indio, Piso de Palafita e Tubo/Cabo.
+
+2. cenario_hd_transparentes/ (45 Sprites 128x128 PNG com fundo transparente)
+   - Inclui os 9 terrenos + 9 Nodos de Recursos Naturais (Argila, Cauixi, Curua,
+     Urucum, Acai, Seringueira, Andiroba, Samauma, Tronco Queimado) +
+     9 Pontos de Interesse Arqueologicos/Sucata (Cacos, Vaso de Gargalo soterrado,
+     Altar de Cariatides, Grafismos, Quartzo, Jade, Motor a Diesel, Draga, Palafita) +
+     9 Construcoes da Ecobase + 9 Personagens/Veiculos/Fauna (Protagonista,
+     Drone Beija-Flor, Canoa Solar, Catamara Solar, Boto, Arara, Vitoria-Regia, Mestre Artesao).
+
+3. objetos_mundo_32x32/ (36 Sprites 32x32 PNG com fundo transparente)
+   - Versao compacta para tilemaps 16-bit nativos.
+
+4. cenario_hd_cards/ (45 Cards catalogados com rotulo)
+   - Recortes individuais da prancha principal para consulta rapida.
+
+5. Spritesheets e Manifesto:
+   - spritesheet_cenario_e_recursos_hd.jpg: Prancha master 9x5 em 16-bit.
+   - spritesheet_cenario_45_transparente.png: Atlas 9x5 com fundo transparente.
+   - scenery_manifest.json: Mapa completo de IDs, categorias e coordenadas.

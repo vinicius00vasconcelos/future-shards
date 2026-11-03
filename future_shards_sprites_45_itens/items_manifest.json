@@ -1,0 +1,822 @@
+{
+  "game": "Future Shards",
+  "total_items": 45,
+  "total_buildings": 8,
+  "items": [
+    {
+      "index": 1,
+      "id": "mat_01",
+      "slug": "argila_de_varzea",
+      "name": "Argila de Várzea",
+      "category": "A - Recurso Bruto",
+      "sprite_32x32": "sprites_32x32/mat_01_argila_de_varzea.png",
+      "sprite_128x128": "sprites_128x128/mat_01_argila_de_varzea.png",
+      "atlas_grid": {
+        "col": 0,
+        "row": 0,
+        "x": 0,
+        "y": 0,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 2,
+      "id": "mat_02",
+      "slug": "esponja_de_cauixi",
+      "name": "Esponja de Cauixi",
+      "category": "A - Recurso Bruto",
+      "sprite_32x32": "sprites_32x32/mat_02_esponja_de_cauixi.png",
+      "sprite_128x128": "sprites_128x128/mat_02_esponja_de_cauixi.png",
+      "atlas_grid": {
+        "col": 1,
+        "row": 0,
+        "x": 128,
+        "y": 0,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 3,
+      "id": "mat_03",
+      "slug": "casca_de_caraipe",
+      "name": "Casca de Caraipé",
+      "category": "A - Recurso Bruto",
+      "sprite_32x32": "sprites_32x32/mat_03_casca_de_caraipe.png",
+      "sprite_128x128": "sprites_128x128/mat_03_casca_de_caraipe.png",
+      "atlas_grid": {
+        "col": 2,
+        "row": 0,
+        "x": 256,
+        "y": 0,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 4,
+      "id": "mat_04",
+      "slug": "fibra_de_curua",
+      "name": "Fibra de Curuá",
+      "category": "A - Recurso Bruto",
+      "sprite_32x32": "sprites_32x32/mat_04_fibra_de_curua.png",
+      "sprite_128x128": "sprites_128x128/mat_04_fibra_de_curua.png",
+      "atlas_grid": {
+        "col": 3,
+        "row": 0,
+        "x": 384,
+        "y": 0,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 5,
+      "id": "mat_05",
+      "slug": "cipo_titica",
+      "name": "Cipó-Titica",
+      "category": "A - Recurso Bruto",
+      "sprite_32x32": "sprites_32x32/mat_05_cipo_titica.png",
+      "sprite_128x128": "sprites_128x128/mat_05_cipo_titica.png",
+      "atlas_grid": {
+        "col": 4,
+        "row": 0,
+        "x": 512,
+        "y": 0,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 6,
+      "id": "mat_06",
+      "slug": "lenha_caida_biomassa",
+      "name": "Lenha Caída / Biomassa",
+      "category": "A - Recurso Bruto",
+      "sprite_32x32": "sprites_32x32/mat_06_lenha_caida_biomassa.png",
+      "sprite_128x128": "sprites_128x128/mat_06_lenha_caida_biomassa.png",
+      "atlas_grid": {
+        "col": 5,
+        "row": 0,
+        "x": 640,
+        "y": 0,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 7,
+      "id": "mat_07",
+      "slug": "latex_de_seringueira",
+      "name": "Látex de Seringueira",
+      "category": "A - Recurso Bruto",
+      "sprite_32x32": "sprites_32x32/mat_07_latex_de_seringueira.png",
+      "sprite_128x128": "sprites_128x128/mat_07_latex_de_seringueira.png",
+      "atlas_grid": {
+        "col": 6,
+        "row": 0,
+        "x": 768,
+        "y": 0,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 8,
+      "id": "mat_08",
+      "slug": "sementes_de_acai",
+      "name": "Sementes de Açaí e Bacaba",
+      "category": "A - Recurso Bruto",
+      "sprite_32x32": "sprites_32x32/mat_08_sementes_de_acai.png",
+      "sprite_128x128": "sprites_128x128/mat_08_sementes_de_acai.png",
+      "atlas_grid": {
+        "col": 7,
+        "row": 0,
+        "x": 896,
+        "y": 0,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 9,
+      "id": "mat_09",
+      "slug": "muda_de_samauma",
+      "name": "Muda de Samaúma / Castanheira",
+      "category": "A - Recurso Bruto",
+      "sprite_32x32": "sprites_32x32/mat_09_muda_de_samauma.png",
+      "sprite_128x128": "sprites_128x128/mat_09_muda_de_samauma.png",
+      "atlas_grid": {
+        "col": 8,
+        "row": 0,
+        "x": 1024,
+        "y": 0,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 10,
+      "id": "mat_10",
+      "slug": "sementes_de_urucum",
+      "name": "Sementes de Urucum",
+      "category": "A - Recurso Bruto",
+      "sprite_32x32": "sprites_32x32/mat_10_sementes_de_urucum.png",
+      "sprite_128x128": "sprites_128x128/mat_10_sementes_de_urucum.png",
+      "atlas_grid": {
+        "col": 0,
+        "row": 1,
+        "x": 0,
+        "y": 128,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 11,
+      "id": "mat_11",
+      "slug": "fruto_de_jenipapo",
+      "name": "Fruto de Jenipapo",
+      "category": "A - Recurso Bruto",
+      "sprite_32x32": "sprites_32x32/mat_11_fruto_de_jenipapo.png",
+      "sprite_128x128": "sprites_128x128/mat_11_fruto_de_jenipapo.png",
+      "atlas_grid": {
+        "col": 1,
+        "row": 1,
+        "x": 128,
+        "y": 128,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 12,
+      "id": "mat_12",
+      "slug": "sementes_andiroba_copaiba",
+      "name": "Sementes de Andiroba e Copaíba",
+      "category": "A - Recurso Bruto",
+      "sprite_32x32": "sprites_32x32/mat_12_sementes_andiroba_copaiba.png",
+      "sprite_128x128": "sprites_128x128/mat_12_sementes_andiroba_copaiba.png",
+      "atlas_grid": {
+        "col": 2,
+        "row": 1,
+        "x": 256,
+        "y": 128,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 13,
+      "id": "mat_13",
+      "slug": "agua_bruta_do_rio",
+      "name": "Água Bruta do Rio",
+      "category": "A - Recurso Bruto",
+      "sprite_32x32": "sprites_32x32/mat_13_agua_bruta_do_rio.png",
+      "sprite_128x128": "sprites_128x128/mat_13_agua_bruta_do_rio.png",
+      "atlas_grid": {
+        "col": 3,
+        "row": 1,
+        "x": 384,
+        "y": 128,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 14,
+      "id": "arq_01",
+      "slug": "caco_ceramico_tapajonico",
+      "name": "Caco Cerâmico Tapajônico",
+      "category": "B - Arqueologia/Mineral/Sucata",
+      "sprite_32x32": "sprites_32x32/arq_01_caco_ceramico_tapajonico.png",
+      "sprite_128x128": "sprites_128x128/arq_01_caco_ceramico_tapajonico.png",
+      "atlas_grid": {
+        "col": 4,
+        "row": 1,
+        "x": 512,
+        "y": 128,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 15,
+      "id": "arq_02",
+      "slug": "fragmento_vaso_de_gargalo",
+      "name": "Fragmento de Vaso de Gargalo",
+      "category": "B - Arqueologia/Mineral/Sucata",
+      "sprite_32x32": "sprites_32x32/arq_02_fragmento_vaso_de_gargalo.png",
+      "sprite_128x128": "sprites_128x128/arq_02_fragmento_vaso_de_gargalo.png",
+      "atlas_grid": {
+        "col": 5,
+        "row": 1,
+        "x": 640,
+        "y": 128,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 16,
+      "id": "arq_03",
+      "slug": "fragmento_vaso_de_cariatides",
+      "name": "Fragmento de Vaso de Cariátides",
+      "category": "B - Arqueologia/Mineral/Sucata",
+      "sprite_32x32": "sprites_32x32/arq_03_fragmento_vaso_de_cariatides.png",
+      "sprite_128x128": "sprites_128x128/arq_03_fragmento_vaso_de_cariatides.png",
+      "atlas_grid": {
+        "col": 6,
+        "row": 1,
+        "x": 768,
+        "y": 128,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 17,
+      "id": "arq_04",
+      "slug": "apendice_zoomorfo_antigo",
+      "name": "Apêndice Zoomorfo Antigo",
+      "category": "B - Arqueologia/Mineral/Sucata",
+      "sprite_32x32": "sprites_32x32/arq_04_apendice_zoomorfo_antigo.png",
+      "sprite_128x128": "sprites_128x128/arq_04_apendice_zoomorfo_antigo.png",
+      "atlas_grid": {
+        "col": 7,
+        "row": 1,
+        "x": 896,
+        "y": 128,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 18,
+      "id": "min_01",
+      "slug": "quartzo_leitoso",
+      "name": "Quartzo Leitoso",
+      "category": "B - Arqueologia/Mineral/Sucata",
+      "sprite_32x32": "sprites_32x32/min_01_quartzo_leitoso.png",
+      "sprite_128x128": "sprites_128x128/min_01_quartzo_leitoso.png",
+      "atlas_grid": {
+        "col": 8,
+        "row": 1,
+        "x": 1024,
+        "y": 128,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 19,
+      "id": "min_02",
+      "slug": "pedra_verde_nefrita",
+      "name": "Pedra Verde (Nefrita / Jade)",
+      "category": "B - Arqueologia/Mineral/Sucata",
+      "sprite_32x32": "sprites_32x32/min_02_pedra_verde_nefrita.png",
+      "sprite_128x128": "sprites_128x128/min_02_pedra_verde_nefrita.png",
+      "atlas_grid": {
+        "col": 0,
+        "row": 2,
+        "x": 0,
+        "y": 256,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 20,
+      "id": "rec_01",
+      "slug": "sucata_de_cobre",
+      "name": "Sucata de Cobre",
+      "category": "B - Arqueologia/Mineral/Sucata",
+      "sprite_32x32": "sprites_32x32/rec_01_sucata_de_cobre.png",
+      "sprite_128x128": "sprites_128x128/rec_01_sucata_de_cobre.png",
+      "atlas_grid": {
+        "col": 1,
+        "row": 2,
+        "x": 128,
+        "y": 256,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 21,
+      "id": "rec_02",
+      "slug": "imas_rolamentos_reciclados",
+      "name": "Ímãs e Rolamentos Reciclados",
+      "category": "B - Arqueologia/Mineral/Sucata",
+      "sprite_32x32": "sprites_32x32/rec_02_imas_rolamentos_reciclados.png",
+      "sprite_128x128": "sprites_128x128/rec_02_imas_rolamentos_reciclados.png",
+      "atlas_grid": {
+        "col": 2,
+        "row": 2,
+        "x": 256,
+        "y": 256,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 22,
+      "id": "rec_03",
+      "slug": "vidro_silicio_recuperado",
+      "name": "Vidro e Silício Recuperado",
+      "category": "B - Arqueologia/Mineral/Sucata",
+      "sprite_32x32": "sprites_32x32/rec_03_vidro_silicio_recuperado.png",
+      "sprite_128x128": "sprites_128x128/rec_03_vidro_silicio_recuperado.png",
+      "atlas_grid": {
+        "col": 3,
+        "row": 2,
+        "x": 384,
+        "y": 256,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 23,
+      "id": "proc_01",
+      "slug": "massa_ceramica_temperada",
+      "name": "Massa Cerâmica Temperada",
+      "category": "C - Processado Solarpunk",
+      "sprite_32x32": "sprites_32x32/proc_01_massa_ceramica_temperada.png",
+      "sprite_128x128": "sprites_128x128/proc_01_massa_ceramica_temperada.png",
+      "atlas_grid": {
+        "col": 4,
+        "row": 2,
+        "x": 512,
+        "y": 256,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 24,
+      "id": "proc_02",
+      "slug": "biocarvao_ativado",
+      "name": "Biocarvão Ativado (Pirólise)",
+      "category": "C - Processado Solarpunk",
+      "sprite_32x32": "sprites_32x32/proc_02_biocarvao_ativado.png",
+      "sprite_128x128": "sprites_128x128/proc_02_biocarvao_ativado.png",
+      "atlas_grid": {
+        "col": 5,
+        "row": 2,
+        "x": 640,
+        "y": 256,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 25,
+      "id": "proc_03",
+      "slug": "terra_preta_de_indio",
+      "name": "Terra Preta de Índio",
+      "category": "C - Processado Solarpunk",
+      "sprite_32x32": "sprites_32x32/proc_03_terra_preta_de_indio.png",
+      "sprite_128x128": "sprites_128x128/proc_03_terra_preta_de_indio.png",
+      "atlas_grid": {
+        "col": 6,
+        "row": 2,
+        "x": 768,
+        "y": 256,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 26,
+      "id": "proc_04",
+      "slug": "borracha_natural_vulcanizada",
+      "name": "Borracha Natural Vulcanizada",
+      "category": "C - Processado Solarpunk",
+      "sprite_32x32": "sprites_32x32/proc_04_borracha_natural_vulcanizada.png",
+      "sprite_128x128": "sprites_128x128/proc_04_borracha_natural_vulcanizada.png",
+      "atlas_grid": {
+        "col": 7,
+        "row": 2,
+        "x": 896,
+        "y": 256,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 27,
+      "id": "proc_05",
+      "slug": "oleo_medicinal_andiroba",
+      "name": "Óleo Medicinal de Andiroba/Copaíba",
+      "category": "C - Processado Solarpunk",
+      "sprite_32x32": "sprites_32x32/proc_05_oleo_medicinal_andiroba.png",
+      "sprite_128x128": "sprites_128x128/proc_05_oleo_medicinal_andiroba.png",
+      "atlas_grid": {
+        "col": 8,
+        "row": 2,
+        "x": 1024,
+        "y": 256,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 28,
+      "id": "proc_06",
+      "slug": "cabo_eletrico_ecologico",
+      "name": "Cabo Elétrico Ecológico",
+      "category": "C - Processado Solarpunk",
+      "sprite_32x32": "sprites_32x32/proc_06_cabo_eletrico_ecologico.png",
+      "sprite_128x128": "sprites_128x128/proc_06_cabo_eletrico_ecologico.png",
+      "atlas_grid": {
+        "col": 0,
+        "row": 3,
+        "x": 0,
+        "y": 384,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 29,
+      "id": "proc_07",
+      "slug": "celula_fotovoltaica_urucum",
+      "name": "Célula Fotovoltaica de Urucum",
+      "category": "C - Processado Solarpunk",
+      "sprite_32x32": "sprites_32x32/proc_07_celula_fotovoltaica_urucum.png",
+      "sprite_128x128": "sprites_128x128/proc_07_celula_fotovoltaica_urucum.png",
+      "atlas_grid": {
+        "col": 1,
+        "row": 3,
+        "x": 128,
+        "y": 384,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 30,
+      "id": "proc_08",
+      "slug": "tubo_hidraulico_terracota",
+      "name": "Tubo Hidráulico de Terracota",
+      "category": "C - Processado Solarpunk",
+      "sprite_32x32": "sprites_32x32/proc_08_tubo_hidraulico_terracota.png",
+      "sprite_128x128": "sprites_128x128/proc_08_tubo_hidraulico_terracota.png",
+      "atlas_grid": {
+        "col": 2,
+        "row": 3,
+        "x": 256,
+        "y": 384,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 31,
+      "id": "proc_09",
+      "slug": "microcircuito_piezo_ceramico",
+      "name": "Microcircuito Piezo-Cerâmico",
+      "category": "C - Processado Solarpunk",
+      "sprite_32x32": "sprites_32x32/proc_09_microcircuito_piezo_ceramico.png",
+      "sprite_128x128": "sprites_128x128/proc_09_microcircuito_piezo_ceramico.png",
+      "atlas_grid": {
+        "col": 3,
+        "row": 3,
+        "x": 384,
+        "y": 384,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 32,
+      "id": "cons_01",
+      "slug": "agua_fresca_filtrada",
+      "name": "Água Fresca Filtrada",
+      "category": "D - Consumível",
+      "sprite_32x32": "sprites_32x32/cons_01_agua_fresca_filtrada.png",
+      "sprite_128x128": "sprites_128x128/cons_01_agua_fresca_filtrada.png",
+      "atlas_grid": {
+        "col": 4,
+        "row": 3,
+        "x": 512,
+        "y": 384,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 33,
+      "id": "cons_02",
+      "slug": "tigela_acai_energetico",
+      "name": "Tigela de Açaí Energético",
+      "category": "D - Consumível",
+      "sprite_32x32": "sprites_32x32/cons_02_tigela_acai_energetico.png",
+      "sprite_128x128": "sprites_128x128/cons_02_tigela_acai_energetico.png",
+      "atlas_grid": {
+        "col": 5,
+        "row": 3,
+        "x": 640,
+        "y": 384,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 34,
+      "id": "cons_03",
+      "slug": "balsamo_de_copaiba",
+      "name": "Bálsamo de Copaíba",
+      "category": "D - Consumível",
+      "sprite_32x32": "sprites_32x32/cons_03_balsamo_de_copaiba.png",
+      "sprite_128x128": "sprites_128x128/cons_03_balsamo_de_copaiba.png",
+      "atlas_grid": {
+        "col": 6,
+        "row": 3,
+        "x": 768,
+        "y": 384,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 35,
+      "id": "cons_04",
+      "slug": "incenso_breu_andiroba",
+      "name": "Incenso de Breu e Andiroba",
+      "category": "D - Consumível",
+      "sprite_32x32": "sprites_32x32/cons_04_incenso_breu_andiroba.png",
+      "sprite_128x128": "sprites_128x128/cons_04_incenso_breu_andiroba.png",
+      "atlas_grid": {
+        "col": 7,
+        "row": 3,
+        "x": 896,
+        "y": 384,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 36,
+      "id": "eq_tool_01",
+      "slug": "pa_de_manejo_tapajo",
+      "name": "Pá de Manejo Tapajó",
+      "category": "E - Equipável",
+      "sprite_32x32": "sprites_32x32/eq_tool_01_pa_de_manejo_tapajo.png",
+      "sprite_128x128": "sprites_128x128/eq_tool_01_pa_de_manejo_tapajo.png",
+      "atlas_grid": {
+        "col": 8,
+        "row": 3,
+        "x": 1024,
+        "y": 384,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 37,
+      "id": "eq_tool_02",
+      "slug": "chave_de_desmontagem",
+      "name": "Chave de Desmontagem",
+      "category": "E - Equipável",
+      "sprite_32x32": "sprites_32x32/eq_tool_02_chave_de_desmontagem.png",
+      "sprite_128x128": "sprites_128x128/eq_tool_02_chave_de_desmontagem.png",
+      "atlas_grid": {
+        "col": 0,
+        "row": 4,
+        "x": 0,
+        "y": 512,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 38,
+      "id": "eq_tool_03",
+      "slug": "scanner_tapajonico",
+      "name": "Scanner Tapajônico",
+      "category": "E - Equipável",
+      "sprite_32x32": "sprites_32x32/eq_tool_03_scanner_tapajonico.png",
+      "sprite_128x128": "sprites_128x128/eq_tool_03_scanner_tapajonico.png",
+      "atlas_grid": {
+        "col": 1,
+        "row": 4,
+        "x": 128,
+        "y": 512,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 39,
+      "id": "eq_head_01",
+      "slug": "oculos_bio_scanner",
+      "name": "Óculos Bio-Scanner",
+      "category": "E - Equipável",
+      "sprite_32x32": "sprites_32x32/eq_head_01_oculos_bio_scanner.png",
+      "sprite_128x128": "sprites_128x128/eq_head_01_oculos_bio_scanner.png",
+      "atlas_grid": {
+        "col": 2,
+        "row": 4,
+        "x": 256,
+        "y": 512,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 40,
+      "id": "eq_body_01",
+      "slug": "colete_fibra_curua",
+      "name": "Colete de Fibra de Curuá",
+      "category": "E - Equipável",
+      "sprite_32x32": "sprites_32x32/eq_body_01_colete_fibra_curua.png",
+      "sprite_128x128": "sprites_128x128/eq_body_01_colete_fibra_curua.png",
+      "atlas_grid": {
+        "col": 3,
+        "row": 4,
+        "x": 384,
+        "y": 512,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 41,
+      "id": "eq_back_01",
+      "slug": "cesto_trancado_varzea",
+      "name": "Cesto Trançado de Várzea",
+      "category": "E - Equipável",
+      "sprite_32x32": "sprites_32x32/eq_back_01_cesto_trancado_varzea.png",
+      "sprite_128x128": "sprites_128x128/eq_back_01_cesto_trancado_varzea.png",
+      "atlas_grid": {
+        "col": 4,
+        "row": 4,
+        "x": 512,
+        "y": 512,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 42,
+      "id": "eq_back_02",
+      "slug": "mochila_solar_mk2",
+      "name": "Mochila Solar MK-II",
+      "category": "E - Equipável",
+      "sprite_32x32": "sprites_32x32/eq_back_02_mochila_solar_mk2.png",
+      "sprite_128x128": "sprites_128x128/eq_back_02_mochila_solar_mk2.png",
+      "atlas_grid": {
+        "col": 5,
+        "row": 4,
+        "x": 640,
+        "y": 512,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 43,
+      "id": "eq_feet_01",
+      "slug": "botas_de_seringueira",
+      "name": "Botas de Seringueira",
+      "category": "E - Equipável",
+      "sprite_32x32": "sprites_32x32/eq_feet_01_botas_de_seringueira.png",
+      "sprite_128x128": "sprites_128x128/eq_feet_01_botas_de_seringueira.png",
+      "atlas_grid": {
+        "col": 6,
+        "row": 4,
+        "x": 768,
+        "y": 512,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 44,
+      "id": "eq_amul_01",
+      "slug": "muiraquita_de_jade",
+      "name": "Muiraquitã de Jade",
+      "category": "E - Equipável",
+      "sprite_32x32": "sprites_32x32/eq_amul_01_muiraquita_de_jade.png",
+      "sprite_128x128": "sprites_128x128/eq_amul_01_muiraquita_de_jade.png",
+      "atlas_grid": {
+        "col": 7,
+        "row": 4,
+        "x": 896,
+        "y": 512,
+        "w": 128,
+        "h": 128
+      }
+    },
+    {
+      "index": 45,
+      "id": "eq_amul_02",
+      "slug": "amuleto_zoomorfo_pintura",
+      "name": "Amuleto Zoomorfo e Pintura",
+      "category": "E - Equipável",
+      "sprite_32x32": "sprites_32x32/eq_amul_02_amuleto_zoomorfo_pintura.png",
+      "sprite_128x128": "sprites_128x128/eq_amul_02_amuleto_zoomorfo_pintura.png",
+      "atlas_grid": {
+        "col": 8,
+        "row": 4,
+        "x": 1024,
+        "y": 512,
+        "w": 128,
+        "h": 128
+      }
+    }
+  ],
+  "buildings": [
+    {
+      "id": "bld_01",
+      "slug": "piso_palafita_ponte",
+      "name": "Piso de Palafita / Ponte",
+      "sprite_128x128": "buildings_128x128/bld_01_piso_palafita_ponte.png"
+    },
+    {
+      "id": "bld_02",
+      "slug": "forno_ceramico_pirolise",
+      "name": "Forno Cerâmico de Pirólise",
+      "sprite_128x128": "buildings_128x128/bld_02_forno_ceramico_pirolise.png"
+    },
+    {
+      "id": "bld_03",
+      "slug": "canteiro_terra_preta",
+      "name": "Canteiro de Terra Preta",
+      "sprite_128x128": "buildings_128x128/bld_03_canteiro_terra_preta.png"
+    },
+    {
+      "id": "bld_04",
+      "slug": "bancada_solarpunk",
+      "name": "Bancada Solarpunk",
+      "sprite_128x128": "buildings_128x128/bld_04_bancada_solarpunk.png"
+    },
+    {
+      "id": "bld_05",
+      "slug": "painel_solar_palafita",
+      "name": "Painel Solar de Palafita",
+      "sprite_128x128": "buildings_128x128/bld_05_painel_solar_palafita.png"
+    },
+    {
+      "id": "bld_06",
+      "slug": "bio_bateria_tapajonica",
+      "name": "Bio-Bateria Tapajônica",
+      "sprite_128x128": "buildings_128x128/bld_06_bio_bateria_tapajonica.png"
+    },
+    {
+      "id": "bld_07",
+      "slug": "condensador_cariatides",
+      "name": "Condensador de Cariátides",
+      "sprite_128x128": "buildings_128x128/bld_07_condensador_cariatides.png"
+    },
+    {
+      "id": "bld_08",
+      "slug": "estacao_drone_beija_flor",
+      "name": "Estação do Drone Beija-Flor",
+      "sprite_128x128": "buildings_128x128/bld_08_estacao_drone_beija_flor.png"
+    }
+  ]
+}

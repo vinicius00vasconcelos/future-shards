@@ -1,0 +1,27 @@
+FUTURE SHARDS - PACOTE COMPLETO DE SPRITES (45 ITENS + 8 CONSTRUCOES)
+========================================================================
+
+Estrutura de pastas deste arquivo ZIP:
+
+1. sprites_hd_transparentes/ (45 arquivos PNG 128x128 com fundo transparente)
+   - Sprites recortados da Sprite Sheet Master 16-bit com fundo removido (RGBA),
+     nomeados pelo ID exato da documentacao (ex: mat_01_argila_de_varzea.png).
+
+2. sprites_hd_cards/ (45 arquivos PNG)
+   - Cards individuais recortados em alta resolucao contendo o icone e o rotulo.
+
+3. sprites_32x32/ (45 arquivos PNG 32x32 com fundo transparente)
+   - Icones pixel-perfect nativos em 32x32 px prontos para tilemaps e HUD 16-bit.
+
+4. sprites_128x128/ (45 arquivos PNG 128x128 com fundo transparente)
+   - Versao ampliada (Nearest Neighbor) dos sprites 32x32 sem perda de nitidez.
+
+5. buildings_128x128/ (8 arquivos PNG 128x128 com fundo transparente)
+   - Sprites das 8 construcoes da Ecobase (Palafita, Forno, Canteiro de Terra Preta,
+     Bancada Solarpunk, Painel Solar, Bio-Bateria, Condensador de Cariatides e Drone).
+
+6. Spritesheets e Manifesto:
+   - spritesheet_master_45_itens_hd.jpg: Sprite Sheet completa gerada em 16-bit.
+   - spritesheet_45_itens_transparente.png: Atlas 9x5 com fundo transparente.
+   - catalogo_visual_45_itens.png: Prancha de referencia com os IDs de cada item.
+   - items_manifest.json: Mapeamento JSON com todos os IDs, nomes, categorias e coordenadas.
