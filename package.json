@@ -1,0 +1,9 @@
+{
+  "name": "future-shards",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Future Shards — Protótipo 16-Bit Solarpunk Tapajônico (Vercel + Supabase)",
+  "scripts": {
+    "start": "npx serve ."
+  }
+}

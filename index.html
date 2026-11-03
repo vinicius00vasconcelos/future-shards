@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Future Shards — Protótipo Funcional 16-Bit (Solarpunk Tapajônico)</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="min-h-screen flex flex-col bg-[#0e131a] text-slate-100">
+
+  <!-- TOP STATUS & NAVIGATION BAR -->
+  <header class="w-full bg-[#151c25] border-b-2 border-[#c65d3b] px-3 py-2 flex flex-wrap items-center justify-between gap-2 z-20">
+    <!-- Brand & Zone Indicator -->
+    <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2 bg-[#231917] border border-[#f5c242] px-2.5 py-1 rounded">
+        <span class="w-2.5 h-2.5 rounded-full bg-[#2ed5c4] animate-pulse"></span>
+        <span class="pixel-font text-[11px] text-[#f5c242]">FUTURE SHARDS</span>
+      </div>
+      <div id="hudZoneBadge" class="text-xs font-bold px-2.5 py-1 rounded bg-emerald-950/90 border border-emerald-500/60 text-emerald-300">
+        Zona 1: Trapiche e Várzea do Tapajós
+      </div>
+    </div>
+
+    <!-- Core Metrics HUD: HP, Vigor, Solar Grid, PCV, ECO % & Season Calendar -->
+    <div class="flex flex-wrap items-center gap-2 text-xs">
+      <!-- HP -->
+      <div class="bg-slate-900/90 border border-rose-500/50 rounded px-2 py-1 flex items-center gap-1.5" title="Pontos de Vida do Personagem">
+        <span class="text-rose-400 font-bold">HP</span>
+        <div class="w-16 h-2.5 bg-slate-800 rounded overflow-hidden">
+          <div id="barHp" class="h-full bg-rose-500 transition-all" style="width: 100%"></div>
+        </div>
+        <span id="txtHp" class="font-mono text-[11px]">100/100</span>
+      </div>
+
+      <!-- Stamina / Vigor -->
+      <div class="bg-slate-900/90 border border-amber-500/50 rounded px-2 py-1 flex items-center gap-1.5" title="Vigor Físico e Térmico">
+        <span class="text-amber-400 font-bold">VIGOR</span>
+        <div class="w-16 h-2.5 bg-slate-800 rounded overflow-hidden">
+          <div id="barStamina" class="h-full bg-amber-400 transition-all" style="width: 100%"></div>
+        </div>
+        <span id="txtStamina" class="font-mono text-[11px]">120/120</span>
+      </div>
+
+      <!-- Solar Power & Battery -->
+      <div class="bg-slate-900/90 border border-sky-400/50 rounded px-2 py-1 flex items-center gap-1.5" title="Balanço da Rede Solar da Ecobase e Bio-Baterias">
+        <span class="text-sky-300 font-bold">SOLAR</span>
+        <span id="txtSolar" class="font-mono text-[11px] text-amber-300">50/85Wh (+0W)</span>
+      </div>
+
+      <!-- Green Science Points (PCV) -->
+      <div class="bg-slate-900/90 border border-teal-400/60 rounded px-2.5 py-1 flex items-center gap-1.5" title="Pontos de Ciência Verde (obtidos com o Bio-Scanner)">
+        <span class="text-teal-300 font-bold">CIÊNCIA:</span>
+        <span id="txtPcv" class="font-mono font-bold text-teal-200">20 PCV</span>
+      </div>
+
+      <!-- Climate Thermometer ECO % -->
+      <div class="bg-slate-900/90 border border-emerald-400 rounded px-2.5 py-1 flex items-center gap-2" title="Termômetro Climático da Bacia do Tapajós (Meta: 100%)">
+        <span class="text-emerald-300 font-extrabold">ECO:</span>
+        <div class="w-20 h-3 bg-slate-800 rounded-full overflow-hidden border border-emerald-600">
+          <div id="barEco" class="h-full bg-gradient-to-r from-amber-500 via-emerald-400 to-cyan-300 transition-all" style="width: 25%"></div>
+        </div>
+        <span id="txtEco" class="font-mono font-bold text-emerald-300">25%</span>
+      </div>
+
+      <!-- 15-Day Season & Day/Night Clock -->
+      <div id="seasonBadge" class="bg-cyan-950/90 border border-cyan-400/70 rounded px-2.5 py-1 flex items-center gap-1.5 font-semibold text-cyan-200">
+        <span id="txtSeasonIcon">🌧️</span>
+        <span id="txtSeason">CHEIA • Dia 1/15 (08:00)</span>
+      </div>
+    </div>
+
+    <!-- Action & Modal Buttons -->
+    <div class="flex items-center gap-1.5">
+      <button id="btnOpenCraft" type="button" class="px-2.5 py-1.5 rounded text-xs font-bold bg-[#c65d3b] hover:bg-[#d96e4b] text-white border border-[#f5c242] transition">
+        [C] Craft (45)
+      </button>
+      <button id="btnOpenTech" type="button" class="px-2.5 py-1.5 rounded text-xs font-bold bg-teal-800 hover:bg-teal-700 text-teal-100 border border-teal-400 transition">
+        [T] Árvore (15)
+      </button>
+      <button id="btnOpenEquip" type="button" class="px-2.5 py-1.5 rounded text-xs font-bold bg-amber-800 hover:bg-amber-700 text-amber-100 border border-amber-400 transition">
+        [I] Equip & Mochila
+      </button>
+      <button id="btnOpenBuild" type="button" class="px-2.5 py-1.5 rounded text-xs font-bold bg-sky-800 hover:bg-sky-700 text-sky-100 border border-sky-400 transition">
+        [B] Construir (9)
+      </button>
+      <button id="btnOpenCloud" type="button" class="px-2.5 py-1.5 rounded text-xs font-bold bg-emerald-800 hover:bg-emerald-700 text-emerald-100 border border-emerald-400 transition" title="Salvar/Carregar no Supabase Cloud e Ver Logs">
+        ☁️ Cloud & Saves
+      </button>
+      <button id="btnNextDay" type="button" class="px-2 py-1.5 rounded text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-600" title="Avançar 1 Dia no Calendário Sazonal">
+        +1 Dia ⏭️
+      </button>
+      <button id="btnToggleSeason" type="button" class="px-2 py-1.5 rounded text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-slate-600" title="Alternar imediatamente entre Cheia (Dia 1) e Seca (Dia 16) para teste">
+        Cheia/Seca 🔄
+      </button>
+      <button id="btnMute" type="button" class="px-2 py-1.5 rounded text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600" title="Ativar/Desativar Som 16-Bit">
+        🔊
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN WORKSPACE: CANVAS VIEWPORT + SIDE INSPECTOR -->
+  <main class="flex-1 flex flex-col lg:flex-row overflow-hidden relative">
+
+    <!-- LEFT/CENTER: 16-BIT TOP-DOWN GAMEPLAY CANVAS -->
+    <section class="flex-1 flex flex-col bg-[#0b1017] relative overflow-hidden">
+      <!-- Top Floating Sub-Bar: Active Tool & Quick Teleport between the 3 Zones -->
+      <div class="w-full bg-slate-900/85 border-b border-slate-800 px-3 py-1.5 flex flex-wrap items-center justify-between gap-2 text-xs z-10">
+        <div class="flex items-center gap-2">
+          <span class="text-slate-400">Modo Ativo:</span>
+          <span id="txtActiveAction" class="font-bold text-[#f5c242] bg-amber-950/60 border border-amber-500/40 px-2 py-0.5 rounded">
+            [1] Pá & Coleta Seletiva
+          </span>
+          <span id="txtBuildSelected" class="hidden font-bold text-cyan-300 bg-cyan-950/80 border border-cyan-400 px-2 py-0.5 rounded">
+            Construindo: Piso de Palafita (Clique no mapa)
+          </span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <span class="text-slate-400 text-[11px]">Ir para Zona:</span>
+          <button id="btnGoZone1" type="button" class="px-2 py-0.5 rounded bg-emerald-900/70 hover:bg-emerald-800 text-emerald-200 border border-emerald-600/50 text-[11px]">
+            1. Várzea (Base)
+          </button>
+          <button id="btnGoZone2" type="button" class="px-2 py-0.5 rounded bg-teal-900/70 hover:bg-teal-800 text-teal-200 border border-teal-600/50 text-[11px]">
+            2. Igapó Arqueológico
+          </button>
+          <button id="btnGoZone3" type="button" class="px-2 py-0.5 rounded bg-amber-900/70 hover:bg-amber-800 text-amber-200 border border-amber-600/50 text-[11px]">
+            3. Cicatriz da Queimada
+          </button>
+        </div>
+      </div>
+
+      <!-- Canvas Container -->
+      <div id="canvasContainer" class="flex-1 relative w-full h-[460px] lg:h-auto flex items-center justify-center overflow-hidden bg-[#090d12]">
+        <canvas id="gameCanvas" width="800" height="480" class="pixel-canvas w-full h-full block cursor-crosshair"></canvas>
+
+        <!-- Mini-Map Overlay (Top Right) -->
+        <div class="absolute top-3 right-3 bg-[#131a24]/95 tapajo-border rounded p-1.5 flex flex-col items-center gap-1 z-10">
+          <div class="flex items-center justify-between w-full text-[10px] font-bold text-amber-300 px-1">
+            <span>MAPA 60x40 (SANTARÉM)</span>
+            <span id="txtCoords" class="font-mono text-cyan-300">X:8 Y:20</span>
+          </div>
+          <canvas id="minimapCanvas" width="180" height="120" class="pixel-canvas border border-slate-700 rounded cursor-pointer" title="Clique no minimapa para mover a câmera/personagem"></canvas>
+          <div class="flex justify-between w-full text-[9px] text-slate-400 px-1">
+            <span>Z1: Várzea</span>
+            <span>Z2: Igapó</span>
+            <span>Z3: Queimada</span>
+          </div>
+        </div>
+
+        <!-- On-Screen Touch D-Pad & Action Buttons (Bottom Left for Mobile/Narrow View) -->
+        <div class="absolute bottom-3 left-3 flex items-end gap-2 z-10 opacity-90 hover:opacity-100">
+          <div class="grid grid-cols-3 gap-1 bg-slate-900/85 p-1.5 rounded-lg border border-slate-700">
+            <div></div>
+            <button id="btnMoveUp" type="button" class="w-8 h-8 rounded bg-slate-800 hover:bg-slate-700 active:bg-amber-600 text-xs font-bold">▲</button>
+            <div></div>
+            <button id="btnMoveLeft" type="button" class="w-8 h-8 rounded bg-slate-800 hover:bg-slate-700 active:bg-amber-600 text-xs font-bold">◀</button>
+            <button id="btnActCenter" type="button" class="w-8 h-8 rounded bg-[#c65d3b] hover:bg-[#d86b48] text-[10px] font-bold text-white" title="Executar ação no tile atual (Espaço)">AÇÃO</button>
+            <button id="btnMoveRight" type="button" class="w-8 h-8 rounded bg-slate-800 hover:bg-slate-700 active:bg-amber-600 text-xs font-bold">▶</button>
+            <div></div>
+            <button id="btnMoveDown" type="button" class="w-8 h-8 rounded bg-slate-800 hover:bg-slate-700 active:bg-amber-600 text-xs font-bold">▼</button>
+            <div></div>
+          </div>
+        </div>
+
+        <!-- Toast / Scientific Discovery Notification Banner -->
+        <div id="toastBanner" class="hidden absolute top-3 left-3 max-w-md bg-[#1a2432]/95 border-2 border-[#f5c242] rounded-lg px-3.5 py-2.5 shadow-2xl z-20 transition-all">
+          <div id="toastTitle" class="text-xs font-extrabold text-[#f5c242] uppercase tracking-wider">Descoberta Científica!</div>
+          <div id="toastBody" class="text-xs text-slate-200 mt-0.5">Você escaneou Esponja de Cauixi (+10 PCV).</div>
+        </div>
+      </div>
+
+      <!-- BOTTOM ACTION HOTBAR (8 TOOLS / MODES) -->
+      <div class="w-full bg-[#151c25] border-t-2 border-[#c65d3b] px-3 py-2 flex flex-wrap items-center justify-center gap-1.5 z-10">
+        <button data-mode="collect" class="hotbar-btn px-2.5 py-1.5 rounded border-2 border-[#f5c242] bg-[#2a1f1d] text-xs font-bold text-amber-200 flex items-center gap-1.5">
+          <span class="font-mono text-[10px] bg-amber-500/20 px-1 rounded">1</span> ⛏️ Coletar / Escavar
+        </button>
+        <button data-mode="scan" class="hotbar-btn px-2.5 py-1.5 rounded border border-slate-700 bg-slate-900 hover:border-teal-400 text-xs font-semibold text-teal-200 flex items-center gap-1.5">
+          <span class="font-mono text-[10px] bg-teal-500/20 px-1 rounded">2</span> 📡 Bio-Scanner (+PCV)
+        </button>
+        <button data-mode="recycle" class="hotbar-btn px-2.5 py-1.5 rounded border border-slate-700 bg-slate-900 hover:border-amber-400 text-xs font-semibold text-orange-200 flex items-center gap-1.5">
+          <span class="font-mono text-[10px] bg-orange-500/20 px-1 rounded">3</span> 🔧 Desmontar Sucata
+        </button>
+        <button data-mode="terrapreta" class="hotbar-btn px-2.5 py-1.5 rounded border border-slate-700 bg-slate-900 hover:border-emerald-400 text-xs font-semibold text-emerald-200 flex items-center gap-1.5">
+          <span class="font-mono text-[10px] bg-emerald-500/20 px-1 rounded">4</span> 🌑 Aplicar Terra Preta
+        </button>
+        <button data-mode="plant" class="hotbar-btn px-2.5 py-1.5 rounded border border-slate-700 bg-slate-900 hover:border-green-400 text-xs font-semibold text-green-200 flex items-center gap-1.5">
+          <span class="font-mono text-[10px] bg-green-500/20 px-1 rounded">5</span> 🌱 Plantar Muda Nativa
+        </button>
+        <button data-mode="build" class="hotbar-btn px-2.5 py-1.5 rounded border border-slate-700 bg-slate-900 hover:border-sky-400 text-xs font-semibold text-sky-200 flex items-center gap-1.5">
+          <span class="font-mono text-[10px] bg-sky-500/20 px-1 rounded">6</span> 🏗️ Posicionar Estrutura
+        </button>
+        <button id="btnQuickConsume" type="button" class="px-2.5 py-1.5 rounded border border-slate-700 bg-slate-900 hover:border-purple-400 text-xs font-semibold text-purple-200 flex items-center gap-1.5" title="Consumir Açaí, Água Filtrada ou Bálsamo para restaurar Vigor e Vida">
+          <span class="font-mono text-[10px] bg-purple-500/20 px-1 rounded">7</span> 🥣 Consumir Açaí/Água
+        </button>
+      </div>
+    </section>
+
+    <!-- RIGHT SIDEBAR: LIVE INSPECTOR, MISSION TRACKER & LOG -->
+    <aside class="w-full lg:w-80 bg-[#141b24] border-t-2 lg:border-t-0 lg:border-l-2 border-[#c65d3b] flex flex-col justify-between p-3 gap-3 overflow-y-auto max-h-[420px] lg:max-h-none">
+      <!-- Tile / Object Inspector -->
+      <div class="tapajo-card rounded-lg p-3">
+        <div class="flex items-center justify-between border-b border-slate-700/80 pb-1.5 mb-2">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-[#f5c242]">Inspetor de Tile & Bioma</span>
+          <span id="inspSeasonEffect" class="text-[10px] px-1.5 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-600/50">Cheia (+Água)</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <div id="inspSpriteBox" class="sprite-icon rounded bg-slate-900 border border-amber-500/40"></div>
+          <div class="flex-1 min-w-0">
+            <div id="inspTitle" class="text-sm font-bold text-white truncate">Solo de Várzea</div>
+            <div id="inspSub" class="text-xs text-emerald-300">Umidade: 90% • Zona 1</div>
+            <div id="inspHint" class="text-[11px] text-slate-300 mt-1">Clique em objetos próximos ou pressione [Espaço] para interagir.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dr. Stone / Solarpunk Milestones Checklist -->
+      <div class="tapajo-card rounded-lg p-3 flex-1 flex flex-col gap-2">
+        <div class="flex items-center justify-between border-b border-slate-700/80 pb-1.5">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-teal-300">Marcos do Protótipo</span>
+          <span id="txtMilestoneProgress" class="text-xs font-mono text-amber-300">1/6</span>
+        </div>
+        <ul id="milestoneList" class="space-y-1.5 text-xs text-slate-300 overflow-y-auto"></ul>
+      </div>
+
+      <!-- Quick Inventory Preview -->
+      <div class="tapajo-card rounded-lg p-3">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-amber-300">Mochila Rápida</span>
+          <span id="txtBagSlots" class="text-[11px] font-mono text-slate-400">6/12 slots</span>
+        </div>
+        <div id="quickInventoryGrid" class="grid grid-cols-6 gap-1.5"></div>
+      </div>
+
+      <!-- Activity Log -->
+      <div class="bg-[#0e131a] border border-slate-800 rounded-lg p-2.5 h-28 flex flex-col">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">Diário Científico do Tapajós</span>
+        <div id="gameLog" class="flex-1 overflow-y-auto space-y-1 text-[11px] text-slate-300 font-mono"></div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL 1: CRAFTING & CATALOG OF 45 ITEMS                               -->
+  <!-- ===================================================================== -->
+  <div id="modalCraft" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 z-40">
+    <div class="bg-[#161e29] tapajo-border rounded-xl w-full max-w-5xl max-h-[90vh] flex flex-col overflow-hidden">
+      <div class="bg-[#231815] border-b border-[#c65d3b] px-4 py-3 flex items-center justify-between">
+        <div>
+          <h2 class="pixel-font text-sm text-[#f5c242]">BANCADA DE CRIAÇÃO E CATÁLOGO (45 ITENS)</h2>
+          <p class="text-xs text-slate-300 mt-0.5">Transforme argila, cauixi, fibras e sucata reciclada em biotecnologia ancestral e equipamentos Solarpunk.</p>
+        </div>
+        <button id="btnCloseCraft" type="button" class="px-3 py-1 rounded bg-rose-900/80 hover:bg-rose-800 text-rose-100 text-xs font-bold border border-rose-500">Fechar [ESC]</button>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="px-4 py-2 bg-[#111720] border-b border-slate-800 flex flex-wrap items-center justify-between gap-2">
+        <div class="flex flex-wrap gap-1.5" id="craftCategoryTabs">
+          <button data-cat="ALL" class="craft-tab-btn px-2.5 py-1 rounded text-xs font-bold bg-[#c65d3b] text-white">Todos (45)</button>
+          <button data-cat="C" class="craft-tab-btn px-2.5 py-1 rounded text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700">C. Processados Solarpunk (9)</button>
+          <button data-cat="E" class="craft-tab-btn px-2.5 py-1 rounded text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700">E. Ferramentas, Roupas & Biojoias (10)</button>
+          <button data-cat="D" class="craft-tab-btn px-2.5 py-1 rounded text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700">D. Consumíveis & Medicina (4)</button>
+          <button data-cat="A" class="craft-tab-btn px-2.5 py-1 rounded text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700">A. Recursos Naturais (13)</button>
+          <button data-cat="B" class="craft-tab-btn px-2.5 py-1 rounded text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700">B. Arqueologia & Sucata (9)</button>
+        </div>
+        <button id="btnSandboxGrant" type="button" class="px-2.5 py-1 rounded text-xs font-bold bg-emerald-800 hover:bg-emerald-700 text-emerald-100 border border-emerald-400" title="Modo de Teste: Adiciona +5 unidades de todos os recursos básicos na mochila">
+          🧪 Kit de Teste (+5 Insumos)
+        </button>
+      </div>
+
+      <div id="craftItemsGrid" class="p-4 overflow-y-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 flex-1"></div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL 2: DR. STONE SCIENTIFIC TECH TREE (15 NODES across 3 ERAS)      -->
+  <!-- ===================================================================== -->
+  <div id="modalTech" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 z-40">
+    <div class="bg-[#161e29] tapajo-border rounded-xl w-full max-w-5xl max-h-[90vh] flex flex-col overflow-hidden">
+      <div class="bg-[#132629] border-b border-teal-500 px-4 py-3 flex items-center justify-between">
+        <div>
+          <h2 class="pixel-font text-sm text-teal-300">MAPA CIENTÍFICO ANCESTRAL & SOLARPUNK (15 NÓS)</h2>
+          <p class="text-xs text-slate-300 mt-0.5">Use o Bio-Scanner no mapa para acumular Pontos de Ciência Verde (PCV) e destravar as 3 Eras Tecnológicas.</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <span id="modalTechPcv" class="px-3 py-1 rounded bg-teal-950 border border-teal-400 text-teal-200 font-mono text-xs font-bold">20 PCV Disponíveis</span>
+          <button id="btnAddTestPcv" type="button" class="px-2.5 py-1 rounded bg-amber-800 hover:bg-amber-700 text-amber-100 text-xs font-bold border border-amber-400">+100 PCV (Teste)</button>
+          <button id="btnCloseTech" type="button" class="px-3 py-1 rounded bg-rose-900/80 hover:bg-rose-800 text-rose-100 text-xs font-bold border border-rose-500">Fechar [ESC]</button>
+        </div>
+      </div>
+
+      <div id="techTreeContainer" class="p-4 overflow-y-auto grid grid-cols-1 lg:grid-cols-3 gap-4 flex-1"></div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL 3: CHARACTER EQUIPMENT, BIO-AMULETS & FULL INVENTORY            -->
+  <!-- ===================================================================== -->
+  <div id="modalEquip" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 z-40">
+    <div class="bg-[#161e29] tapajo-border rounded-xl w-full max-w-4xl max-h-[90vh] flex flex-col overflow-hidden">
+      <div class="bg-[#231815] border-b border-[#c65d3b] px-4 py-3 flex items-center justify-between">
+        <div>
+          <h2 class="pixel-font text-sm text-[#f5c242]">EQUIPAMENTOS, BIOJOIAS E ATRIBUTOS DO PERSONAGEM</h2>
+          <p class="text-xs text-slate-300 mt-0.5">Equipe vestimentas de fibras amazônicas, botas de seringueira, mochila solar e amuletos tapajônicos.</p>
+        </div>
+        <button id="btnCloseEquip" type="button" class="px-3 py-1 rounded bg-rose-900/80 hover:bg-rose-800 text-rose-100 text-xs font-bold border border-rose-500">Fechar [ESC]</button>
+      </div>
+
+      <div class="p-4 overflow-y-auto grid grid-cols-1 md:grid-cols-2 gap-4 flex-1">
+        <!-- Left: Equipped Slots & Live Attributes -->
+        <div class="space-y-3">
+          <div class="tapajo-card rounded-lg p-3">
+            <h3 class="text-xs font-extrabold uppercase text-amber-300 mb-2">Slots Equipados (Clique para Desequipar)</h3>
+            <div id="equippedSlotsList" class="grid grid-cols-2 gap-2"></div>
+          </div>
+
+          <div class="tapajo-card rounded-lg p-3">
+            <h3 class="text-xs font-extrabold uppercase text-teal-300 mb-2">Atributos Ativos no Bioma</h3>
+            <div id="playerStatsPanel" class="space-y-1.5 text-xs"></div>
+          </div>
+        </div>
+
+        <!-- Right: Full Inventory Backpack -->
+        <div class="tapajo-card rounded-lg p-3 flex flex-col">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xs font-extrabold uppercase text-amber-300">Mochila Completa (Clique para Equipar / Usar)</h3>
+            <span id="modalBagCount" class="text-xs font-mono text-slate-400">6/12 slots</span>
+          </div>
+          <div id="fullInventoryList" class="grid grid-cols-2 sm:grid-cols-3 gap-2 overflow-y-auto max-h-96 pr-1"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL 4: ECOBASE SOLARPUNK BUILDING MENU (9 STRUCTURES)               -->
+  <!-- ===================================================================== -->
+  <div id="modalBuild" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 z-40">
+    <div class="bg-[#161e29] tapajo-border rounded-xl w-full max-w-4xl max-h-[90vh] flex flex-col overflow-hidden">
+      <div class="bg-[#132230] border-b border-sky-500 px-4 py-3 flex items-center justify-between">
+        <div>
+          <h2 class="pixel-font text-sm text-sky-300">CONSTRUÇÃO DA ECOBASE SOLARPUNK (9 ESTRUTURAS)</h2>
+          <p class="text-xs text-slate-300 mt-0.5">Selecione uma estrutura para posicioná-la no mapa. Construções geram energia limpa e elevam o índice ECO (%).</p>
+        </div>
+        <button id="btnCloseBuild" type="button" class="px-3 py-1 rounded bg-rose-900/80 hover:bg-rose-800 text-rose-100 text-xs font-bold border border-rose-500">Fechar [ESC]</button>
+      </div>
+
+      <div id="buildingsGrid" class="p-4 overflow-y-auto grid grid-cols-1 md:grid-cols-3 gap-3 flex-1"></div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL 5: SUPABASE CLOUD SAVES, RANKING & GITHUB CHANGELOG             -->
+  <!-- ===================================================================== -->
+  <div id="modalCloud" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 z-40">
+    <div class="bg-[#161e29] tapajo-border rounded-xl w-full max-w-4xl max-h-[90vh] flex flex-col overflow-hidden">
+      <div class="bg-[#122620] border-b border-emerald-500 px-4 py-3 flex flex-wrap items-center justify-between gap-2">
+        <div>
+          <h2 class="pixel-font text-sm text-emerald-300">NUVEM SUPABASE + VERCEL & DIÁRIO DE VERSÕES</h2>
+          <p class="text-xs text-slate-300 mt-0.5">Salve sua expedição na nuvem para continuar de qualquer lugar e registre observações de teste.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span id="cloudStatusBadge" class="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-900 border border-slate-700 text-slate-300">Verificando...</span>
+          <button id="btnCloseCloud" type="button" class="px-3 py-1 rounded bg-rose-900/80 hover:bg-rose-800 text-rose-100 text-xs font-bold border border-rose-500">Fechar [ESC]</button>
+        </div>
+      </div>
+
+      <div class="p-4 overflow-y-auto grid grid-cols-1 md:grid-cols-2 gap-4 flex-1">
+        <!-- Left: Cloud Saves & Leaderboard -->
+        <div class="space-y-3 flex flex-col">
+          <div class="tapajo-card rounded-lg p-3 flex items-center justify-between gap-2">
+            <div>
+              <div class="text-xs font-extrabold uppercase text-amber-300">Sincronizar Partida Atual</div>
+              <div class="text-[11px] text-slate-300">Grava mapa 60x40, mochila, tecnologias e ECO% no Supabase.</div>
+            </div>
+            <button id="btnSaveSupabase" type="button" class="px-3 py-2 rounded-lg text-xs font-extrabold bg-emerald-600 hover:bg-emerald-500 text-white border border-emerald-300 shrink-0 shadow">
+              ☁️ Salvar no Supabase
+            </button>
+          </div>
+
+          <div class="tapajo-card rounded-lg p-3 flex-1 flex flex-col">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-xs font-extrabold uppercase text-teal-300">Saves na Nuvem & Ranking ECO (%)</h3>
+              <button id="btnRefreshCloud" type="button" class="text-[11px] text-amber-300 hover:underline">🔄 Atualizar</button>
+            </div>
+            <div id="cloudSavesList" class="space-y-2 overflow-y-auto max-h-72 pr-1"></div>
+          </div>
+        </div>
+
+        <!-- Right: Test Feedback & Changelog -->
+        <div class="space-y-3 flex flex-col">
+          <div class="tapajo-card rounded-lg p-3 space-y-2">
+            <h3 class="text-xs font-extrabold uppercase text-amber-300">Registrar Nota de Teste / Bug / Ideia (Supabase)</h3>
+            <div class="flex gap-2">
+              <input id="inputCloudNote" type="text" placeholder="Ex: Testei a transição da Cheia na Zona 2..." class="flex-1 px-2.5 py-1.5 rounded bg-slate-900 border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400" />
+              <button id="btnSendCloudNote" type="button" class="px-3 py-1.5 rounded text-xs font-bold bg-[#c65d3b] hover:bg-[#d96e4b] text-white border border-amber-300">
+                Enviar
+              </button>
+            </div>
+          </div>
+
+          <div class="tapajo-card rounded-lg p-3 flex-1 flex flex-col">
+            <h3 class="text-xs font-extrabold uppercase text-sky-300 mb-2">Histórico de Modificações & Notas de Teste</h3>
+            <div id="cloudLogsList" class="space-y-2 overflow-y-auto max-h-72 pr-1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- TITLE / LOGIN OVERLAY SCREEN                                          -->
+  <!-- ===================================================================== -->
+  <div id="loginOverlay" class="fixed inset-0 bg-[#0b1017]/95 backdrop-blur-md flex items-center justify-center p-4 z-50">
+    <div class="max-w-lg w-full bg-[#161f2c] tapajo-border rounded-2xl p-6 text-center shadow-2xl relative overflow-hidden">
+      <div class="inline-block px-3 py-1 rounded-full bg-amber-500/10 border border-amber-400/40 text-amber-300 text-[11px] font-bold mb-2">
+        PROTÓTIPO FUNCIONAL 16-BIT • SANTARÉM, PARÁ
+      </div>
+      <h1 class="pixel-font text-2xl sm:text-3xl text-[#f5c242] drop-shadow mb-2">FUTURE SHARDS</h1>
+      <p class="text-xs sm:text-sm text-teal-300 font-semibold mb-4">O Futuro da Amazônia é Ancestral e Solar</p>
+
+      <div class="bg-[#101620] border border-slate-700 rounded-xl p-3.5 text-left text-xs text-slate-300 space-y-2 mb-4">
+        <p>🌱 <strong>Sua Missão:</strong> Explorar as 3 zonas de Santarém (Várzea, Igapó Arqueológico e Cicatriz da Queimada), escanear relíquias da Cerâmica Tapajônica e unir a Terra Preta de Índio à energia Solarpunk até atingir <strong>ECO: 100%</strong>.</p>
+        <p>🌦️ <strong>Ciclo de 15 Dias:</strong> Enfrente os 15 dias de <strong>Cheia</strong> (rios cheios e igapós navegáveis) e os 15 dias de <strong>Seca</strong> (praias e sítios expostos, sol intenso e necessidade de Condensadores de Cariátides).</p>
+      </div>
+
+      <div class="space-y-3 text-left mb-5">
+        <div>
+          <label for="inputPlayerName" class="block text-xs font-bold text-amber-300 mb-1">Nome do Cientista-Artesão:</label>
+          <input id="inputPlayerName" type="text" value="Aruã Tapajó" class="w-full px-3 py-2 rounded bg-slate-900 border border-[#c65d3b] text-sm text-white focus:outline-none focus:border-[#f5c242]" />
+        </div>
+        <div class="flex items-center justify-between gap-2 pt-1">
+          <label class="flex items-center gap-2 text-xs text-slate-300 cursor-pointer">
+            <input id="chkStarterKit" type="checkbox" checked class="accent-[#f5c242] w-4 h-4" />
+            <span>Iniciar com Kit Básico de Ferramentas (Pá + Scanner Inicial)</span>
+          </label>
+        </div>
+      </div>
+
+      <button id="btnStartGame" type="button" class="w-full py-3 rounded-xl pixel-font text-xs bg-gradient-to-r from-[#c65d3b] to-amber-600 hover:from-[#d96b47] hover:to-amber-500 text-white border-2 border-[#f5c242] shadow-lg transition transform active:scale-95">
+        ▶ INICIAR EXPEDIÇÃO NO TAPAJÓS
+      </button>
+    </div>
+  </div>
+
+  <!-- MODULAR SCRIPTS -->
+  <script src="js/data.js"></script>
+  <script src="js/assets.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/world.js"></script>
+  <script src="js/renderer.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/cloud.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+
