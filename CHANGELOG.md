@@ -17,3 +17,4 @@ Todas as modificações significativas neste projeto são documentadas neste arq
 - Especificação técnica completa ([`especificacao_prototipo_future_shards.md`](especificacao_prototipo_future_shards.md)) com calendário sazonal de 30 dias (15 Cheia / 15 Seca), mapa `60x40` em 3 Zonas, 45 itens e 15 nós científicos.
 - Biblioteca completa de sprites 16-bit (`32x32`, `128x128`, cards HD e atlases transparentes).
 - Protótipo inicial em arquivo único HTML.
+

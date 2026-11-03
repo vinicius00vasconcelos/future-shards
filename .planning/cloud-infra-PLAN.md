@@ -25,3 +25,4 @@ Configurar o repositório Git/GitHub com histórico semântico detalhado por fas
      2. Arquitetura modularizada da Fase 1 (`index.html`, `css/`, `js/`).
      3. Integração Cloud com Supabase + Vercel Serverless API (`api/cloud.js`, `js/cloud.js`, `vercel.json`).
      4. Documentação de evolução (`CHANGELOG.md` e `README.md`).
+

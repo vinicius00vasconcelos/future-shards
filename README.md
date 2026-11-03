@@ -18,3 +18,4 @@ Protótipo funcional top-down 16-bit inspirado na ciência prática de *Dr. Ston
 - [`especificacao_prototipo_future_shards.md`](especificacao_prototipo_future_shards.md): Planta baixa completa de level design, itens e árvore científica.
 - [`CHANGELOG.md`](CHANGELOG.md): Histórico detalhado de modificações.
 - [`.planning/`](.planning/): Documentos de arquitetura, roadmap e planos de fase.
+
