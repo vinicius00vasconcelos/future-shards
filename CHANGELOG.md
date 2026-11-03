@@ -2,6 +2,14 @@
 
 Todas as modificações significativas neste projeto são documentadas neste arquivo e nos commits do GitHub.
 
+## [v0.5.1] — 2026-11-03
+### Corrigido & Melhorado
+- **HUD 100% Responsivo dentro da Tela e Acessível no Mobile ([`index.html`](index.html), [`css/style.css`](css/style.css), [`js/ui.js`](js/ui.js), [`js/main.js`](js/main.js), [`js/renderer.js`](js/renderer.js))**:
+  - **Viewport Sem Estouro (`h-[100dvh]`)**: O jogo agora ocupa exatamente a altura útil da tela em qualquer dispositivo (desktop, tablet ou celular), eliminando o scroll vertical indesejado da página.
+  - **Proporção Nativa do Canvas no Mobile**: Removido o limite mínimo antigo de `480px` em `resizeCanvas()`, garantindo que em celulares retrato (`360px`–`430px`) os sprites mantenham proporção quadrada 1:1 sem achatar.
+  - **HUD Superior, Minimapa Retrátil, D-Pad e Hotbar sem Colisão**: Barras `HP`, `SOLAR` e `ECO` redimensionadas para `w-36` no mobile (`w-56` no desktop), minimapa `SANTARÉM` compacto (`96x72px`) com botão `🗺️` para recolher/expandir no celular, D-Pad posicionado acima da Hotbar (`bottom-14`) com botões de `32x32px` (`touch-manipulation`), e Hotbar inferior de 7 slots com `w-10 h-10` no mobile (`w-12 h-12` no desktop).
+  - **Gaveta Deslizante Mobile (`📋 Info`) e Toque Direto no Mapa (`touchstart`)**: A barra lateral direita (Inspetor de Bioma, Marcos do Protótipo, Mochila e Diário) agora abre como *bottom-sheet* no celular através do botão `📋 Info` no topo, mantendo o mapa 100% visível.
+
 ## [v0.5.0] — 2026-11-03
 ### Adicionado
 - **Nova Tela de Login 16-Bit Solarpunk Tapajônico ([`index.html`](index.html), [`css/style.css`](css/style.css), [`js/main.js`](js/main.js), [`assets/ui/`](assets/ui/))**:

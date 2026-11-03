@@ -59,8 +59,8 @@ function initRenderer() {
 function resizeCanvas() {
   if (!canvas) return;
   const rect = document.getElementById("canvasContainer").getBoundingClientRect();
-  canvas.width = Math.max(480, Math.floor(rect.width));
-  canvas.height = Math.max(320, Math.floor(rect.height));
+  canvas.width = Math.max(300, Math.floor(rect.width));
+  canvas.height = Math.max(240, Math.floor(rect.height));
 }
 
 function drawScenerySprite(ctxTarget, sIdx, dx, dy, dw, dh) {

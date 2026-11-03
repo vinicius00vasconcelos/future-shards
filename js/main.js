@@ -103,9 +103,11 @@ window.addEventListener("load", () => {
     state.input.mouseWorldY = wy;
   });
 
-  // Canvas click -> Smooth Click-to-Move or Immediate Interaction
-  canvas.addEventListener("click", (e) => {
-    const { wx, wy } = screenToWorldCoords(e.clientX, e.clientY);
+  // Canvas click & touch -> Smooth Click-to-Move or Immediate Interaction
+  const handleCanvasPointer = (clientX, clientY) => {
+    const { wx, wy } = screenToWorldCoords(clientX, clientY);
+    state.input.mouseWorldX = wx;
+    state.input.mouseWorldY = wy;
     const tx = Math.max(0, Math.min(MAP_W - 1, Math.floor(wx)));
     const ty = Math.max(0, Math.min(MAP_H - 1, Math.floor(wy)));
     updateInspector(tx, ty);
@@ -117,10 +119,47 @@ window.addEventListener("load", () => {
     if (obj || mode === "build" || mode === "terrapreta" || mode === "plant" || mode === "scan" || dist <= 2.1) {
       interactAtTile(tx, ty, false);
     } else {
-      // Free-roam glide to exact clicked spot!
+      // Free-roam glide to exact clicked/tapped spot!
       state.player.moveTarget = { x: wx, y: wy, interactOnArrive: false };
     }
+  };
+
+  canvas.addEventListener("click", (e) => {
+    handleCanvasPointer(e.clientX, e.clientY);
   });
+
+  canvas.addEventListener("touchstart", (e) => {
+    if (e.touches && e.touches.length === 1) {
+      const t = e.touches[0];
+      handleCanvasPointer(t.clientX, t.clientY);
+    }
+  }, { passive: true });
+
+  // Mobile Inspector Drawer & Collapsible Minimap Toggles
+  const btnToggleInspectorMobile = document.getElementById("btnToggleInspectorMobile");
+  const btnCloseInspectorMobile = document.getElementById("btnCloseInspectorMobile");
+  const inspectorSidebar = document.getElementById("inspectorSidebar");
+  if (btnToggleInspectorMobile && inspectorSidebar) {
+    btnToggleInspectorMobile.addEventListener("click", () => {
+      inspectorSidebar.classList.toggle("hidden");
+      inspectorSidebar.classList.toggle("flex");
+    });
+  }
+  if (btnCloseInspectorMobile && inspectorSidebar) {
+    btnCloseInspectorMobile.addEventListener("click", () => {
+      inspectorSidebar.classList.add("hidden");
+      inspectorSidebar.classList.remove("flex");
+    });
+  }
+
+  const btnToggleMinimapMobile = document.getElementById("btnToggleMinimapMobile");
+  const minimapBodyWrap = document.getElementById("minimapBodyWrap");
+  if (btnToggleMinimapMobile && minimapBodyWrap) {
+    btnToggleMinimapMobile.addEventListener("click", (e) => {
+      e.stopPropagation();
+      minimapBodyWrap.classList.toggle("hidden");
+    });
+  }
 
   // Minimap click -> teleport / quick travel to inspect any zone
   miniCanvas.addEventListener("click", (e) => {

@@ -130,13 +130,13 @@ function updateHUDOnly() {
   if (zBadge) {
     if (p.x < 20) {
       zBadge.textContent = "Zona 1: Trapiche e Várzea do Tapajós";
-      zBadge.className = "text-xs font-bold px-2.5 py-1 rounded bg-emerald-950/90 border border-emerald-500/60 text-emerald-300";
+      zBadge.className = "hidden md:block text-xs font-bold px-2.5 py-1 rounded bg-emerald-950/90 border border-emerald-500/60 text-emerald-300";
     } else if (p.x < 40) {
       zBadge.textContent = "Zona 2: Igapó Alagado e Sítio Arqueológico";
-      zBadge.className = "text-xs font-bold px-2.5 py-1 rounded bg-teal-950/90 border border-teal-500/60 text-teal-300";
+      zBadge.className = "hidden md:block text-xs font-bold px-2.5 py-1 rounded bg-teal-950/90 border border-teal-500/60 text-teal-300";
     } else {
       zBadge.textContent = "Zona 3: Platô e Cicatriz da Queimada";
-      zBadge.className = "text-xs font-bold px-2.5 py-1 rounded bg-amber-950/90 border border-amber-500/60 text-amber-300";
+      zBadge.className = "hidden md:block text-xs font-bold px-2.5 py-1 rounded bg-amber-950/90 border border-amber-500/60 text-amber-300";
     }
   }
   const coords = document.getElementById("txtCoords");
@@ -155,7 +155,7 @@ function renderBottomWoodenHotbar() {
 
   for (let i = 0; i < totalSlots; i++) {
     const slotDiv = document.createElement("div");
-    slotDiv.className = "wood-slot w-12 h-12 flex items-center justify-center relative cursor-pointer";
+    slotDiv.className = "wood-slot w-10 h-10 sm:w-12 sm:h-12 shrink-0 flex items-center justify-center relative cursor-pointer touch-manipulation";
 
     if (i < entries.length) {
       const [itemId, qty] = entries[i];
@@ -165,12 +165,12 @@ function renderBottomWoodenHotbar() {
         const img = document.createElement("img");
         img.src = AssetLibrary.getItemSpriteUrl(itemId, false);
         img.alt = it.name;
-        img.className = "w-9 h-9 pixel-img drop-shadow-[0_2px_2px_rgba(0,0,0,0.85)]";
+        img.className = "w-7 h-7 sm:w-9 sm:h-9 pixel-img drop-shadow-[0_2px_2px_rgba(0,0,0,0.85)]";
         slotDiv.appendChild(img);
 
         if (qty > 1) {
           const badge = document.createElement("span");
-          badge.className = "absolute bottom-0.5 right-1 pixel-font text-[8px] text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.95)]";
+          badge.className = "absolute bottom-0.5 right-0.5 sm:right-1 pixel-font text-[7px] sm:text-[8px] text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.95)]";
           badge.textContent = qty;
           slotDiv.appendChild(badge);
         }

@@ -8,128 +8,131 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Press+Start+2P&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body class="min-h-screen flex flex-col bg-[#0e131a] text-slate-100">
+<body class="h-[100dvh] w-screen overflow-hidden flex flex-col bg-[#0e131a] text-slate-100">
 
   <!-- TOP STATUS & NAVIGATION BAR -->
-  <header class="w-full bg-[#1b120e] border-b-2 border-[#8c482b] px-3 py-1.5 flex flex-wrap items-center justify-between gap-2 z-20">
+  <header class="w-full bg-[#1b120e] border-b-2 border-[#8c482b] px-2 sm:px-3 py-1 sm:py-1.5 flex flex-wrap items-center justify-between gap-1.5 z-20 shrink-0">
     <!-- Brand & Zone Indicator -->
-    <div class="flex items-center gap-2.5">
-      <div class="flex items-center gap-2 wood-hud-bar px-2.5 py-1">
-        <span class="w-2.5 h-2.5 rounded-full bg-[#2ed5c4] animate-pulse"></span>
-        <span class="pixel-font text-[10px] text-[#f5c242]">FUTURE SHARDS</span>
+    <div class="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+      <div class="flex items-center gap-1.5 wood-hud-bar px-2 py-0.5 sm:px-2.5 sm:py-1">
+        <span class="w-2 h-2 rounded-full bg-[#2ed5c4] animate-pulse"></span>
+        <span class="pixel-font text-[8px] sm:text-[10px] text-[#f5c242]">FUTURE SHARDS</span>
       </div>
-      <div id="hudZoneBadge" class="text-xs font-bold px-2.5 py-1 rounded bg-emerald-950/90 border border-emerald-500/60 text-emerald-300">
+      <div id="hudZoneBadge" class="hidden md:block text-xs font-bold px-2.5 py-1 rounded bg-emerald-950/90 border border-emerald-500/60 text-emerald-300">
         Zona 1: Trapiche e Várzea do Tapajós
       </div>
-      <div id="seasonBadge" class="bg-cyan-950/90 border border-cyan-400/70 rounded px-2.5 py-1 flex items-center gap-1.5 text-xs font-semibold text-cyan-200">
+      <div id="seasonBadge" class="bg-cyan-950/90 border border-cyan-400/70 rounded px-2 py-0.5 sm:px-2.5 sm:py-1 flex items-center gap-1 text-[10px] sm:text-xs font-semibold text-cyan-200">
         <span id="txtSeasonIcon">🌧️</span>
-        <span id="txtSeason">CHEIA • Dia 1/15 (09:30)</span>
+        <span id="txtSeason">CHEIA • Dia 1/15</span>
       </div>
-      <div class="bg-slate-900/90 border border-teal-400/60 rounded px-2.5 py-1 flex items-center gap-1.5 text-xs" title="Pontos de Ciência Verde (obtidos com o Bio-Scanner)">
-        <span class="text-teal-300 font-bold">CIÊNCIA:</span>
+      <div class="bg-slate-900/90 border border-teal-400/60 rounded px-2 py-0.5 sm:px-2.5 sm:py-1 flex items-center gap-1 text-[10px] sm:text-xs" title="Pontos de Ciência Verde (obtidos com o Bio-Scanner)">
+        <span class="text-teal-300 font-bold hidden sm:inline">CIÊNCIA:</span>
         <span id="txtPcv" class="font-mono font-bold text-teal-200">120 PCV</span>
       </div>
     </div>
 
-    <!-- Action & Modal Buttons -->
-    <div class="flex flex-wrap items-center gap-1.5">
-      <button id="btnOpenCraft" type="button" class="px-2.5 py-1 rounded text-xs font-bold bg-[#b85532] hover:bg-[#d16640] text-white border border-[#f5c242] transition">
-        [C] Craft (45)
+    <!-- Action & Modal Buttons (Horizontally scrollable on small mobile screens) -->
+    <div class="flex items-center gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar max-w-full py-0.5">
+      <button id="btnOpenCraft" type="button" class="px-2 sm:px-2.5 py-1 rounded text-[11px] sm:text-xs font-bold bg-[#b85532] hover:bg-[#d16640] text-white border border-[#f5c242] transition shrink-0">
+        <span class="hidden sm:inline">[C] </span>Craft
       </button>
-      <button id="btnOpenTech" type="button" class="px-2.5 py-1 rounded text-xs font-bold bg-teal-800 hover:bg-teal-700 text-teal-100 border border-teal-400 transition">
-        [T] Tech Tree (15)
+      <button id="btnOpenTech" type="button" class="px-2 sm:px-2.5 py-1 rounded text-[11px] sm:text-xs font-bold bg-teal-800 hover:bg-teal-700 text-teal-100 border border-teal-400 transition shrink-0">
+        <span class="hidden sm:inline">[T] </span>Tech Tree
       </button>
-      <button id="btnOpenEquip" type="button" class="px-2.5 py-1 rounded text-xs font-bold bg-amber-800 hover:bg-amber-700 text-amber-100 border border-amber-400 transition">
-        [I] Equip & Mochila
+      <button id="btnOpenEquip" type="button" class="px-2 sm:px-2.5 py-1 rounded text-[11px] sm:text-xs font-bold bg-amber-800 hover:bg-amber-700 text-amber-100 border border-amber-400 transition shrink-0">
+        <span class="hidden sm:inline">[I] </span>Mochila
       </button>
-      <button id="btnOpenBuild" type="button" class="px-2.5 py-1 rounded text-xs font-bold bg-sky-800 hover:bg-sky-700 text-sky-100 border border-sky-400 transition">
-        [B] Construir (9)
+      <button id="btnOpenBuild" type="button" class="px-2 sm:px-2.5 py-1 rounded text-[11px] sm:text-xs font-bold bg-sky-800 hover:bg-sky-700 text-sky-100 border border-sky-400 transition shrink-0">
+        <span class="hidden sm:inline">[B] </span>Construir
       </button>
-      <button id="btnOpenCloud" type="button" class="px-2.5 py-1 rounded text-xs font-bold bg-emerald-800 hover:bg-emerald-700 text-emerald-100 border border-emerald-400 transition" title="Salvar/Carregar no Supabase Cloud e Ver Logs">
-        ☁️ Cloud & Saves
+      <button id="btnOpenCloud" type="button" class="px-2 sm:px-2.5 py-1 rounded text-[11px] sm:text-xs font-bold bg-emerald-800 hover:bg-emerald-700 text-emerald-100 border border-emerald-400 transition shrink-0" title="Salvar/Carregar no Supabase Cloud e Ver Logs">
+        ☁️ <span class="hidden sm:inline">Cloud</span>
       </button>
-      <button id="btnNextDay" type="button" class="px-2 py-1 rounded text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-600" title="Avançar 1 Dia no Calendário Sazonal">
-        +1 Dia ⏭️
+      <button id="btnToggleInspectorMobile" type="button" class="lg:hidden px-2 py-1 rounded text-[11px] font-bold bg-purple-900/90 hover:bg-purple-800 text-purple-100 border border-purple-400 shrink-0" title="Abrir Inspetor, Missões e Diário">
+        📋 Info
       </button>
-      <button id="btnToggleSeason" type="button" class="px-2 py-1 rounded text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-slate-600" title="Alternar imediatamente entre Cheia (Dia 1) e Seca (Dia 16)">
-        Cheia/Seca 🔄
+      <button id="btnNextDay" type="button" class="px-1.5 sm:px-2 py-1 rounded text-[11px] sm:text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-600 shrink-0" title="Avançar 1 Dia no Calendário Sazonal">
+        +1D ⏭️
       </button>
-      <button id="btnMute" type="button" class="px-2 py-1 rounded text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600" title="Ativar/Desativar Som 16-Bit">
+      <button id="btnToggleSeason" type="button" class="px-1.5 sm:px-2 py-1 rounded text-[11px] sm:text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-slate-600 shrink-0" title="Alternar imediatamente entre Cheia (Dia 1) e Seca (Dia 16)">
+        🌧️/☀️
+      </button>
+      <button id="btnMute" type="button" class="px-1.5 sm:px-2 py-1 rounded text-[11px] sm:text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 shrink-0" title="Ativar/Desativar Som 16-Bit">
         🔊
       </button>
     </div>
   </header>
 
   <!-- MAIN WORKSPACE: CANVAS VIEWPORT + SIDE INSPECTOR -->
-  <main class="flex-1 flex flex-col lg:flex-row overflow-hidden relative">
+  <main class="flex-1 flex flex-col lg:flex-row overflow-hidden relative min-h-0">
 
     <!-- LEFT/CENTER: 16-BIT TOP-DOWN GAMEPLAY CANVAS -->
-    <section class="flex-1 flex flex-col bg-[#0b1017] relative overflow-hidden">
+    <section class="flex-1 flex flex-col bg-[#0b1017] relative overflow-hidden min-h-0">
       <!-- Top Sub-Bar: Active Tool & Quick Teleport between the 3 Zones -->
-      <div class="w-full bg-[#15100d]/95 border-b border-[#5c2b17] px-3 py-1 flex flex-wrap items-center justify-between gap-2 text-xs z-10">
-        <div class="flex flex-wrap items-center gap-1.5">
-          <span class="text-amber-200/80 font-semibold text-[11px]">Ferramenta:</span>
-          <button data-mode="collect" class="hotbar-btn px-2 py-0.5 rounded border-2 border-[#f5c242] bg-[#3b1e12] text-[11px] font-bold text-amber-200 flex items-center gap-1">
-            <span>[1]</span> ⛏️ Coletar
+      <div class="w-full bg-[#15100d]/95 border-b border-[#5c2b17] px-2 sm:px-3 py-1 flex items-center justify-between gap-2 text-xs z-10 overflow-x-auto no-scrollbar shrink-0">
+        <div class="flex items-center gap-1 sm:gap-1.5 shrink-0">
+          <span class="text-amber-200/80 font-semibold text-[11px] hidden sm:inline">Ferramenta:</span>
+          <button data-mode="collect" class="hotbar-btn px-2 py-0.5 rounded border-2 border-[#f5c242] bg-[#3b1e12] text-[10px] sm:text-[11px] font-bold text-amber-200 flex items-center gap-1 shrink-0">
+            <span class="hidden sm:inline">[1]</span> ⛏️ Coletar
           </button>
-          <button data-mode="scan" class="hotbar-btn px-2 py-0.5 rounded border border-slate-700 bg-slate-900 hover:border-teal-400 text-[11px] font-semibold text-teal-200 flex items-center gap-1">
-            <span>[2]</span> 📡 Scanner
+          <button data-mode="scan" class="hotbar-btn px-2 py-0.5 rounded border border-slate-700 bg-slate-900 hover:border-teal-400 text-[10px] sm:text-[11px] font-semibold text-teal-200 flex items-center gap-1 shrink-0">
+            <span class="hidden sm:inline">[2]</span> 📡 Scanner
           </button>
-          <button data-mode="recycle" class="hotbar-btn px-2 py-0.5 rounded border border-slate-700 bg-slate-900 hover:border-amber-400 text-[11px] font-semibold text-orange-200 flex items-center gap-1">
-            <span>[3]</span> 🔧 Reciclar
+          <button data-mode="recycle" class="hotbar-btn px-2 py-0.5 rounded border border-slate-700 bg-slate-900 hover:border-amber-400 text-[10px] sm:text-[11px] font-semibold text-orange-200 flex items-center gap-1 shrink-0">
+            <span class="hidden sm:inline">[3]</span> 🔧 Reciclar
           </button>
-          <button data-mode="terrapreta" class="hotbar-btn px-2 py-0.5 rounded border border-slate-700 bg-slate-900 hover:border-emerald-400 text-[11px] font-semibold text-emerald-200 flex items-center gap-1">
-            <span>[4]</span> 🌑 Terra Preta
+          <button data-mode="terrapreta" class="hotbar-btn px-2 py-0.5 rounded border border-slate-700 bg-slate-900 hover:border-emerald-400 text-[10px] sm:text-[11px] font-semibold text-emerald-200 flex items-center gap-1 shrink-0">
+            <span class="hidden sm:inline">[4]</span> 🌑 Terra Preta
           </button>
-          <button data-mode="plant" class="hotbar-btn px-2 py-0.5 rounded border border-slate-700 bg-slate-900 hover:border-green-400 text-[11px] font-semibold text-green-200 flex items-center gap-1">
-            <span>[5]</span> 🌱 Plantar
+          <button data-mode="plant" class="hotbar-btn px-2 py-0.5 rounded border border-slate-700 bg-slate-900 hover:border-green-400 text-[10px] sm:text-[11px] font-semibold text-green-200 flex items-center gap-1 shrink-0">
+            <span class="hidden sm:inline">[5]</span> 🌱 Plantar
           </button>
-          <button data-mode="build" class="hotbar-btn px-2 py-0.5 rounded border border-slate-700 bg-slate-900 hover:border-sky-400 text-[11px] font-semibold text-sky-200 flex items-center gap-1">
-            <span>[6]</span> 🏗️ Construir
+          <button data-mode="build" class="hotbar-btn px-2 py-0.5 rounded border border-slate-700 bg-slate-900 hover:border-sky-400 text-[10px] sm:text-[11px] font-semibold text-sky-200 flex items-center gap-1 shrink-0">
+            <span class="hidden sm:inline">[6]</span> 🏗️ Construir
           </button>
-          <button id="btnQuickConsume" type="button" class="px-2 py-0.5 rounded border border-slate-700 bg-slate-900 hover:border-purple-400 text-[11px] font-semibold text-purple-200 flex items-center gap-1">
-            <span>[7]</span> 🥣 Açaí/Água
+          <button id="btnQuickConsume" type="button" class="px-2 py-0.5 rounded border border-slate-700 bg-slate-900 hover:border-purple-400 text-[10px] sm:text-[11px] font-semibold text-purple-200 flex items-center gap-1 shrink-0">
+            <span class="hidden sm:inline">[7]</span> 🥣 Açaí
           </button>
           <span id="txtActiveAction" class="hidden">[1] Pá & Coleta Seletiva</span>
-          <span id="txtBuildSelected" class="hidden font-bold text-cyan-300 bg-cyan-950/80 border border-cyan-400 px-2 py-0.5 rounded text-[11px]">
+          <span id="txtBuildSelected" class="hidden font-bold text-cyan-300 bg-cyan-950/80 border border-cyan-400 px-2 py-0.5 rounded text-[10px] sm:text-[11px] shrink-0">
             Construindo: Piso de Palafita
           </span>
         </div>
-        <div class="flex items-center gap-1.5">
-          <span class="text-slate-400 text-[11px]">Zona:</span>
-          <button id="btnGoZone1" type="button" class="px-2 py-0.5 rounded bg-emerald-900/70 hover:bg-emerald-800 text-emerald-200 border border-emerald-600/50 text-[11px]">
-            1. Várzea (Base)
+        <div class="flex items-center gap-1 sm:gap-1.5 shrink-0">
+          <span class="text-slate-400 text-[10px] sm:text-[11px] hidden sm:inline">Zona:</span>
+          <button id="btnGoZone1" type="button" class="px-1.5 sm:px-2 py-0.5 rounded bg-emerald-900/70 hover:bg-emerald-800 text-emerald-200 border border-emerald-600/50 text-[10px] sm:text-[11px] shrink-0">
+            Z1 Várzea
           </button>
-          <button id="btnGoZone2" type="button" class="px-2 py-0.5 rounded bg-teal-900/70 hover:bg-teal-800 text-teal-200 border border-teal-600/50 text-[11px]">
-            2. Igapó Arqueológico
+          <button id="btnGoZone2" type="button" class="px-1.5 sm:px-2 py-0.5 rounded bg-teal-900/70 hover:bg-teal-800 text-teal-200 border border-teal-600/50 text-[10px] sm:text-[11px] shrink-0">
+            Z2 Igapó
           </button>
-          <button id="btnGoZone3" type="button" class="px-2 py-0.5 rounded bg-amber-900/70 hover:bg-amber-800 text-amber-200 border border-amber-600/50 text-[11px]">
-            3. Cicatriz da Queimada
+          <button id="btnGoZone3" type="button" class="px-1.5 sm:px-2 py-0.5 rounded bg-amber-900/70 hover:bg-amber-800 text-amber-200 border border-amber-600/50 text-[10px] sm:text-[11px] shrink-0">
+            Z3 Queimada
           </button>
         </div>
       </div>
 
-      <!-- Canvas Container with Authentic 16-Bit Wooden HUD Overlays (Matching Image 2) -->
-      <div id="canvasContainer" class="flex-1 relative w-full h-[520px] lg:h-auto flex items-center justify-center overflow-hidden bg-[#090d12]">
-        <canvas id="gameCanvas" width="800" height="520" class="pixel-canvas w-full h-full block cursor-crosshair"></canvas>
+      <!-- Canvas Container with Authentic 16-Bit Wooden HUD Overlays (Responsive Desktop & Mobile) -->
+      <div id="canvasContainer" class="flex-1 relative w-full min-h-0 flex items-center justify-center overflow-hidden bg-[#090d12]">
+        <canvas id="gameCanvas" width="800" height="520" class="pixel-canvas w-full h-full block cursor-crosshair touch-none"></canvas>
 
-        <!-- TOP-LEFT FLOATING WOODEN HUD BARS: HP, SOLAR, ECO (Matching Image 2!) -->
-        <div class="absolute top-3 left-3 flex flex-col gap-1.5 z-10 pointer-events-none select-none w-56">
+        <!-- TOP-LEFT FLOATING WOODEN HUD BARS: HP, SOLAR, ECO -->
+        <div class="absolute top-2 left-2 sm:top-3 sm:left-3 flex flex-col gap-1 sm:gap-1.5 z-10 pointer-events-none select-none w-36 sm:w-56">
           <!-- HP Bar -->
-          <div class="wood-hud-bar px-2.5 py-1 flex items-center gap-2">
-            <span class="text-sm leading-none">❤️</span>
-            <span class="pixel-font text-[10px] text-white drop-shadow">HP</span>
-            <div class="flex-1 h-3.5 bg-[#361712] border-2 border-[#1c0a06] rounded-sm overflow-hidden relative">
+          <div class="wood-hud-bar px-1.5 py-0.5 sm:px-2.5 sm:py-1 flex items-center gap-1.5 sm:gap-2">
+            <span class="text-xs sm:text-sm leading-none">❤️</span>
+            <span class="pixel-font text-[8px] sm:text-[10px] text-white drop-shadow">HP</span>
+            <div class="flex-1 h-2.5 sm:h-3.5 bg-[#361712] border-2 border-[#1c0a06] rounded-sm overflow-hidden relative">
               <div id="barHp" class="h-full bg-gradient-to-r from-[#38b000] to-[#70e000] transition-all" style="width: 100%"></div>
             </div>
             <span id="txtHp" class="hidden">100/100</span>
           </div>
 
           <!-- SOLAR Bar -->
-          <div class="wood-hud-bar px-2.5 py-1 flex items-center gap-2">
-            <span class="text-sm leading-none">☀️</span>
-            <span class="pixel-font text-[10px] text-amber-200 drop-shadow">SOLAR</span>
-            <div class="flex-1 h-3.5 bg-[#2e2418] border-2 border-[#1c0a06] rounded-sm overflow-hidden relative">
+          <div class="wood-hud-bar px-1.5 py-0.5 sm:px-2.5 sm:py-1 flex items-center gap-1.5 sm:gap-2">
+            <span class="text-xs sm:text-sm leading-none">☀️</span>
+            <span class="pixel-font text-[8px] sm:text-[10px] text-amber-200 drop-shadow">SOLAR</span>
+            <div class="flex-1 h-2.5 sm:h-3.5 bg-[#2e2418] border-2 border-[#1c0a06] rounded-sm overflow-hidden relative">
               <div id="barSolarHud" class="h-full bg-gradient-to-r from-[#f59e0b] to-[#fde047] transition-all" style="width: 75%"></div>
             </div>
             <span id="txtSolar" class="hidden">75/100Wh</span>
@@ -138,69 +141,78 @@
           </div>
 
           <!-- ECO % Bar -->
-          <div class="wood-hud-bar px-2.5 py-1 flex items-center gap-2">
-            <span class="text-sm leading-none">🌿</span>
-            <div class="flex-1 h-4 bg-[#16292b] border-2 border-[#1c0a06] rounded-sm overflow-hidden relative flex items-center">
+          <div class="wood-hud-bar px-1.5 py-0.5 sm:px-2.5 sm:py-1 flex items-center gap-1.5 sm:gap-2">
+            <span class="text-xs sm:text-sm leading-none">🌿</span>
+            <div class="flex-1 h-3 sm:h-4 bg-[#16292b] border-2 border-[#1c0a06] rounded-sm overflow-hidden relative flex items-center">
               <div id="barEco" class="h-full bg-gradient-to-r from-[#2ed5c4] via-[#38efdf] to-[#52b788] transition-all" style="width: 78%"></div>
-              <span class="absolute inset-0 flex items-center pl-1.5 pixel-font text-[9px] text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.95)]">
+              <span class="absolute inset-0 flex items-center pl-1 sm:pl-1.5 pixel-font text-[7px] sm:text-[9px] text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.95)]">
                 ECO: <span id="txtEco" class="ml-1">78%</span>
               </span>
             </div>
           </div>
         </div>
 
-        <!-- TOP-RIGHT SANTARÉM WOODEN MINIMAP OVERLAY (Matching Image 2!) -->
-        <div class="absolute top-3 right-3 flex flex-col items-center z-10">
-          <div class="wood-frame p-2 flex flex-col items-center gap-1">
-            <div class="pixel-font text-[9px] text-[#fde68a] tracking-wider drop-shadow">SANTARÉM</div>
-            <canvas id="minimapCanvas" width="150" height="112" class="pixel-canvas border-2 border-[#2b1208] rounded-sm cursor-pointer" title="Clique no minimapa para navegar por Santarém"></canvas>
-            <div class="flex items-center justify-between w-full text-[9px] font-bold text-amber-200/90 px-0.5">
-              <span>Z1•Z2•Z3</span>
-              <span id="txtCoords" class="font-mono text-cyan-300">X:10 Y:19</span>
+        <!-- TOP-RIGHT SANTARÉM WOODEN MINIMAP OVERLAY (Collapsible on Mobile) -->
+        <div class="absolute top-2 right-2 sm:top-3 sm:right-3 flex flex-col items-end sm:items-center z-10">
+          <div class="wood-frame p-1.5 sm:p-2 flex flex-col items-center gap-1">
+            <div class="flex items-center justify-between w-full gap-2">
+              <div class="pixel-font text-[8px] sm:text-[9px] text-[#fde68a] tracking-wider drop-shadow">SANTARÉM</div>
+              <button id="btnToggleMinimapMobile" type="button" class="sm:hidden text-[9px] px-1 rounded bg-[#3b1e12] text-amber-200 border border-amber-500/40" title="Mostrar/Ocultar Minimapa">🗺️</button>
+            </div>
+            <div id="minimapBodyWrap" class="flex flex-col items-center gap-1">
+              <canvas id="minimapCanvas" width="150" height="112" class="pixel-canvas w-[96px] h-[72px] sm:w-[150px] sm:h-[112px] border-2 border-[#2b1208] rounded-sm cursor-pointer" title="Clique no minimapa para navegar por Santarém"></canvas>
+              <div class="flex items-center justify-between w-full text-[8px] sm:text-[9px] font-bold text-amber-200/90 px-0.5">
+                <span class="hidden sm:inline">Z1•Z2•Z3</span>
+                <span id="txtCoords" class="font-mono text-cyan-300">X:10 Y:19</span>
+              </div>
             </div>
           </div>
-          <div class="pixel-font text-[10px] text-[#fde68a] mt-1 drop-shadow-[0_2px_2px_rgba(0,0,0,0.9)]">SANTARÉM</div>
+          <div class="hidden sm:block pixel-font text-[10px] text-[#fde68a] mt-1 drop-shadow-[0_2px_2px_rgba(0,0,0,0.9)]">SANTARÉM</div>
         </div>
 
-        <!-- On-Screen Touch D-Pad (Bottom Left) -->
-        <div class="absolute bottom-3 left-3 flex items-end gap-2 z-10 opacity-85 hover:opacity-100">
-          <div class="grid grid-cols-3 gap-1 wood-frame p-1.5">
+        <!-- On-Screen Touch D-Pad (Bottom Left — Raised on Mobile so it never collides with the Hotbar) -->
+        <div class="absolute bottom-14 sm:bottom-3 left-2 sm:left-3 flex items-end gap-2 z-10 opacity-90 hover:opacity-100">
+          <div class="grid grid-cols-3 gap-1 wood-frame p-1 sm:p-1.5">
             <div></div>
-            <button id="btnMoveUp" type="button" class="w-7 h-7 rounded bg-[#3b1e12] hover:bg-[#592e1c] active:bg-amber-600 text-xs font-bold text-amber-200">▲</button>
+            <button id="btnMoveUp" type="button" class="w-8 h-8 sm:w-7 sm:h-7 rounded bg-[#3b1e12] hover:bg-[#592e1c] active:bg-amber-600 text-xs font-bold text-amber-200 touch-manipulation">▲</button>
             <div></div>
-            <button id="btnMoveLeft" type="button" class="w-7 h-7 rounded bg-[#3b1e12] hover:bg-[#592e1c] active:bg-amber-600 text-xs font-bold text-amber-200">◀</button>
-            <button id="btnActCenter" type="button" class="w-7 h-7 rounded bg-[#c65d3b] hover:bg-[#d86b48] text-[9px] font-bold text-white" title="Executar ação no tile atual (Espaço)">AÇÃO</button>
-            <button id="btnMoveRight" type="button" class="w-7 h-7 rounded bg-[#3b1e12] hover:bg-[#592e1c] active:bg-amber-600 text-xs font-bold text-amber-200">▶</button>
+            <button id="btnMoveLeft" type="button" class="w-8 h-8 sm:w-7 sm:h-7 rounded bg-[#3b1e12] hover:bg-[#592e1c] active:bg-amber-600 text-xs font-bold text-amber-200 touch-manipulation">◀</button>
+            <button id="btnActCenter" type="button" class="w-8 h-8 sm:w-7 sm:h-7 rounded bg-[#c65d3b] hover:bg-[#d86b48] active:bg-emerald-600 text-[8px] sm:text-[9px] font-bold text-white touch-manipulation" title="Executar ação no tile atual (Espaço)">AÇÃO</button>
+            <button id="btnMoveRight" type="button" class="w-8 h-8 sm:w-7 sm:h-7 rounded bg-[#3b1e12] hover:bg-[#592e1c] active:bg-amber-600 text-xs font-bold text-amber-200 touch-manipulation">▶</button>
             <div></div>
-            <button id="btnMoveDown" type="button" class="w-7 h-7 rounded bg-[#3b1e12] hover:bg-[#592e1c] active:bg-amber-600 text-xs font-bold text-amber-200">▼</button>
+            <button id="btnMoveDown" type="button" class="w-8 h-8 sm:w-7 sm:h-7 rounded bg-[#3b1e12] hover:bg-[#592e1c] active:bg-amber-600 text-xs font-bold text-amber-200 touch-manipulation">▼</button>
             <div></div>
           </div>
         </div>
 
-        <!-- BOTTOM CENTER WOODEN INVENTORY HOTBAR + FLOATING CRAFT TOOLTIP (Matching Image 2!) -->
-        <div class="absolute bottom-2.5 left-1/2 -translate-x-1/2 flex flex-col items-end z-10 max-w-full px-2">
-          <!-- Floating Quick-Craft Card (Right side above hotbar, matching Image 2!) -->
-          <div id="floatingCraftBox" class="wood-frame px-3.5 py-2 mb-1.5 flex flex-col items-center gap-1.5 cursor-pointer hover:brightness-110 transition" title="Clique para fabricar rapidamente ou abrir a Bancada [C]">
-            <div id="floatingCraftTitle" class="pixel-font text-[9px] text-white text-center leading-relaxed drop-shadow-[0_1px_2px_rgba(0,0,0,0.95)]">
+        <!-- BOTTOM CENTER WOODEN INVENTORY HOTBAR + FLOATING CRAFT TOOLTIP -->
+        <div class="absolute bottom-1.5 sm:bottom-2.5 left-1/2 -translate-x-1/2 flex flex-col items-end z-10 max-w-[96vw] px-1 sm:px-2">
+          <!-- Floating Quick-Craft Card (Hidden on compact portrait phones to keep canvas clear, visible on sm+) -->
+          <div id="floatingCraftBox" class="hidden sm:flex wood-frame px-3 py-1.5 mb-1.5 flex-col items-center gap-1 cursor-pointer hover:brightness-110 transition" title="Clique para fabricar rapidamente ou abrir a Bancada [C]">
+            <div id="floatingCraftTitle" class="pixel-font text-[8px] sm:text-[9px] text-white text-center leading-relaxed drop-shadow-[0_1px_2px_rgba(0,0,0,0.95)]">
               CRAFT: BIO-BATERIA<br/>TAPAJÔNICA
             </div>
             <div id="floatingCraftIcons" class="flex items-center justify-center gap-1.5"></div>
           </div>
 
           <!-- 7-Slot Wooden Item Hotbar -->
-          <div id="bottomWoodenHotbar" class="wood-frame p-1.5 flex items-center gap-1.5"></div>
+          <div id="bottomWoodenHotbar" class="wood-frame p-1 sm:p-1.5 flex items-center gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar max-w-full"></div>
         </div>
 
         <!-- Toast / Scientific Discovery Notification Banner -->
-        <div id="toastBanner" class="hidden absolute top-28 left-3 max-w-sm wood-frame px-3.5 py-2.5 shadow-2xl z-20 transition-all">
-          <div id="toastTitle" class="text-xs font-extrabold text-[#fde047] uppercase tracking-wider">Descoberta Científica!</div>
-          <div id="toastBody" class="text-xs text-amber-100 mt-0.5">Você escaneou Esponja de Cauixi (+10 PCV).</div>
+        <div id="toastBanner" class="hidden absolute top-24 sm:top-28 left-2 sm:left-3 max-w-[85vw] sm:max-w-sm wood-frame px-3 py-2 shadow-2xl z-20 transition-all pointer-events-none">
+          <div id="toastTitle" class="text-[11px] sm:text-xs font-extrabold text-[#fde047] uppercase tracking-wider">Descoberta Científica!</div>
+          <div id="toastBody" class="text-[11px] sm:text-xs text-amber-100 mt-0.5">Você escaneou Esponja de Cauixi (+10 PCV).</div>
         </div>
       </div>
     </section>
 
-    <!-- RIGHT SIDEBAR: LIVE INSPECTOR, MISSION TRACKER & LOG -->
-    <aside class="w-full lg:w-72 bg-[#141b24] border-t-2 lg:border-t-0 lg:border-l-2 border-[#8c482b] flex flex-col justify-between p-2.5 gap-2.5 overflow-y-auto max-h-[400px] lg:max-h-none">
+    <!-- RIGHT SIDEBAR: LIVE INSPECTOR, MISSION TRACKER & LOG (Slide-over Drawer on Mobile, Fixed Column on lg+) -->
+    <aside id="inspectorSidebar" class="hidden lg:flex fixed lg:static inset-x-0 bottom-0 top-auto max-h-[75dvh] lg:max-h-none w-full lg:w-72 bg-[#141b24]/98 lg:bg-[#141b24] border-t-2 lg:border-t-0 lg:border-l-2 border-[#8c482b] flex-col justify-between p-2.5 gap-2.5 overflow-y-auto z-30 shadow-2xl lg:shadow-none">
+      <div class="flex lg:hidden items-center justify-between border-b border-[#8c482b] pb-1.5 mb-1">
+        <span class="pixel-font text-[10px] text-[#f5c242]">PAINEL DE CAMPO & MISSÕES</span>
+        <button id="btnCloseInspectorMobile" type="button" class="px-2 py-0.5 rounded bg-rose-900 text-rose-100 text-xs font-bold border border-rose-400">Fechar ✕</button>
+      </div>
       <!-- Tile / Object Inspector -->
       <div class="tapajo-card rounded-lg p-2.5">
         <div class="flex items-center justify-between border-b border-slate-700/80 pb-1 mb-2">
@@ -302,10 +314,12 @@
             </div>
           </div>
 
-          <!-- Interactive Graph Canvas + HTML Node Overlay -->
-          <div id="techTreeGraphWrap" class="relative flex-1 w-full min-h-[430px]">
-            <svg id="techTreeSvg" class="absolute inset-0 w-full h-full pointer-events-none z-0"></svg>
-            <div id="techTreeContainer" class="relative z-10 grid grid-cols-3 gap-4 h-full"></div>
+          <!-- Interactive Graph Canvas + HTML Node Overlay (Horizontally scrollable on narrow mobile screens) -->
+          <div class="w-full overflow-x-auto no-scrollbar pb-2">
+            <div id="techTreeGraphWrap" class="relative flex-1 w-full min-w-[540px] min-h-[430px]">
+              <svg id="techTreeSvg" class="absolute inset-0 w-full h-full pointer-events-none z-0"></svg>
+              <div id="techTreeContainer" class="relative z-10 grid grid-cols-3 gap-4 h-full"></div>
+            </div>
           </div>
         </div>
 
