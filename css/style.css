@@ -1,0 +1,110 @@
+:root {
+  --terracotta: #c65d3b;
+  --terracotta-dark: #7c331e;
+  --solar-gold: #f5c242;
+  --tapajos-cyan: #2ed5c4;
+  --forest-green: #3aa655;
+  --panel-bg: #161d26;
+  --panel-border: #c65d3b;
+}
+
+* {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #0e131a;
+  color: #f1f5f9;
+  overflow-x: hidden;
+}
+
+.pixel-font {
+  font-family: 'Press Start 2P', monospace;
+  letter-spacing: 0.5px;
+}
+
+.pixel-canvas {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.pixel-img {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  object-fit: contain;
+}
+
+.tapajo-border {
+  border: 2px solid #c65d3b;
+  box-shadow: inset 0 0 0 1px #f5c24255, 0 6px 20px rgba(0, 0, 0, 0.65);
+}
+
+.tapajo-card {
+  background: linear-gradient(180deg, #1e2836 0%, #141b24 100%);
+  border: 1.5px solid #9a472d;
+  transition: all 0.15s ease;
+}
+
+.tapajo-card:hover {
+  border-color: #f5c242;
+  transform: translateY(-1px);
+}
+
+.sprite-icon {
+  width: 48px;
+  height: 48px;
+  image-rendering: pixelated;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.sprite-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.sprite-icon-sm {
+  width: 32px;
+  height: 32px;
+  image-rendering: pixelated;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.sprite-icon-sm img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #11161d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c65d3b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f5c242;
+}
+
