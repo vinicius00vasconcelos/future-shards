@@ -103,10 +103,10 @@ window.addEventListener("load", () => {
     const cx = (e.clientX - rect.left) * scaleX;
     const cy = (e.clientY - rect.top) * scaleY;
 
-    const colsVis = Math.ceil(canvas.width / TILE_SIZE) + 2;
-    const rowsVis = Math.ceil(canvas.height / TILE_SIZE) + 2;
-    const camX = Math.max(0, Math.min(MAP_W - colsVis + 1, Math.floor(state.player.x - colsVis / 2)));
-    const camY = Math.max(0, Math.min(MAP_H - rowsVis + 1, Math.floor(state.player.y - rowsVis / 2)));
+    const colsVis = Math.ceil(canvas.width / TILE_SIZE) + 4;
+    const rowsVis = Math.ceil(canvas.height / TILE_SIZE) + 4;
+    const camX = Math.max(0, Math.min(MAP_W - colsVis + 2, Math.floor(state.player.x - colsVis / 2)));
+    const camY = Math.max(0, Math.min(MAP_H - rowsVis + 2, Math.floor(state.player.y - rowsVis / 2)));
 
     const tx = camX + Math.floor(cx / TILE_SIZE);
     const ty = camY + Math.floor(cy / TILE_SIZE);

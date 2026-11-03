@@ -2,6 +2,18 @@
 
 Todas as modificações significativas neste projeto são documentadas neste arquivo e nos commits do GitHub.
 
+## [v0.3.0] — 2026-11-03
+### Corrigido & Adicionado
+- **Restauração Integral dos 90 Sprites 16-Bit a partir dos Cards HD Originais**:
+  - **Diagnóstico da Causa Raiz**: Os arquivos pré-recortados nas pastas `sprites_128x128/`, `sprites_32x32/` e `buildings_128x128/` continham ícones procedurais simplificados de 8-bits, enquanto `cenario_hd_transparentes/` e `sprites_hd_transparentes/` haviam sofrido remoção de fundo por limiar global de brilho (que apagava os contornos escuros e detalhes internos dos personagens, árvores e cabanas).
+  - **Solução**: Extração automatizada via *Edge Flood-Fill (BFS)* diretamente dos 90 cards originais intactos (`sprites_hd_cards/*.png` e `cenario_hd_cards/*.png`), removendo a moldura ardósia e a legenda inferior sem afetar nenhum pixel interno da arte 16-bit, e reconstrução completa dos atlases transparentes (`spritesheet_45_itens_transparente.png` e `spritesheet_cenario_45_transparente.png`).
+- **Engine Visual Multi-Tile com Ordenação de Profundidade (Y-Sorting) e Efeitos Solarpunk ([`js/renderer.js`](js/renderer.js), [`js/world.js`](js/world.js))**:
+  - Escala multi-tile fiel à arte conceitual: Cabana Palafita com teto solar (`3.3x3.1 tiles`), Samaúmas Gigantes (`2.8x3.0 tiles`), Seringueiras/Andirobas/Açaizeiros (`2.2x2.4 tiles`), Fornos de Pirólise com brilho de fogo e fumaça animada, e Torre Condensadora de Cariátides com aura bioluminescente ciano conectada por tubulação de terracota aos canteiros de Terra Preta.
+  - Margens orgânicas curvas do Rio Tapajós (sem efeito xadrez artificial), trapiche de madeira avançando sobre o rio, vagalumes na mata e Drone Beija-Flor pulverizando névoa d'água sobre as mudas.
+- **HUD em Moldura de Madeira/Terracota, Hotbar Inferior de 7 Slots e Mapa Científico Visual ([`index.html`](index.html), [`css/style.css`](css/style.css), [`js/ui.js`](js/ui.js))**:
+  - Barras flutuantes superiores esquerdas (`HP`, `SOLAR`, `ECO: 78%`), minimapa emoldurado `SANTARÉM` no canto superior direito, e barra inferior de madeira com os sprites reais + card flutuante `CRAFT: BIO-BATERIA TAPAJÔNICA`.
+  - Redesenho completo do modal **TECH TREE / MAPA CIENTÍFICO** em grafo visual de 3 colunas (`ERA ANCESTRAL`, `BIO-QUÍMICA TAPAJÔNICA`, `ERA SOLAR-PUNK`) sobre pergaminho de circuito com trilhas douradas luminosas em SVG e painel lateral de inspeção (`PESQUISA: ...`, `CIÊNCIA: X / Y`).
+
 ## [v0.2.0] — 2026-11-03
 ### Adicionado
 - **Integração Cloud (Vercel + Supabase)**:

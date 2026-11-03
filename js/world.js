@@ -4,7 +4,7 @@
 
 const MAP_W = 60;
 const MAP_H = 40;
-const TILE_SIZE = 40; // Rendered pixel size on main canvas
+const TILE_SIZE = 44; // Rendered pixel size on main canvas for rich 16-bit detail
 
 // Terrain Tile IDs (matching SCENERY_ASSETS Row 0: indices 0..8)
 // 0: Deep Tapajós Water, 1: Muddy Amazon Water, 2: Shallow Igapó Water,
@@ -14,34 +14,36 @@ const TILE_SIZE = 40; // Rendered pixel size on main canvas
 const state = {
   playerName: "Aruã Tapajó",
   player: {
-    x: 8,
-    y: 20,
+    x: 10,
+    y: 19,
     hp: 100,
     maxHp: 100,
     stamina: 120,
     maxStamina: 120,
-    solarCharge: 60,
+    solarCharge: 75,
     maxSolarCharge: 100,
-    pcv: 25,
+    pcv: 120,
     scanningTicks: 0,
     inBoat: false,
     equipment: {
       head: null,
       body: null,
-      back: "eq_back_01",
+      back: "eq_back_02",
       feet: null,
-      tool: "eq_tool_01",
-      amulet1: null,
+      tool: "eq_tool_03",
+      amulet1: "eq_amul_01",
       amulet2: null
     },
     inventory: {
-      mat_01: 4,
-      mat_02: 2,
+      eq_amul_01: 1,
+      mat_01: 5,
+      arq_01: 4,
+      proc_03: 4,
+      eq_tool_03: 1,
+      proc_07: 2,
       mat_04: 4,
       mat_06: 4,
       mat_08: 3,
-      arq_01: 2,
-      proc_03: 3,
       cons_02: 2
     }
   },
@@ -49,28 +51,31 @@ const state = {
     season: "CHEIA", // "CHEIA" (Days 1..15) or "SECA" (Days 16..30)
     dayInSeason: 1,  // 1..15
     totalDays: 1,
-    timeOfDay: 8.0,  // 0.0 to 24.0 hours
-    ecoIndex: 25,
+    timeOfDay: 9.5,  // 0.0 to 24.0 hours
+    ecoIndex: 42,
     gridPowerGen: 0,
     gridPowerUse: 0,
     recycledCount: 0,
-    terraPretaCount: 3,
-    plantedTreesCount: 0,
-    unlockedTechs: ["T1_01"],
+    terraPretaCount: 12,
+    plantedTreesCount: 2,
+    unlockedTechs: ["T1_01", "T1_02", "T1_04"],
+    selectedTechId: "T3_04",
     scannedTypes: {},
     activeMode: "collect", // collect, scan, recycle, terrapreta, plant, build
-    selectedBuildId: "bld_01",
-    craftFilterCat: "ALL"
+    selectedBuildId: "bld_07",
+    craftFilterCat: "ALL",
+    hoveredCraftId: "bld_06"
   },
   baseGrid: [], // 2D array [y][x] of baseTerrain
   objects: [],  // 2D array [y][x] of world objects / buildings
   drones: [
-    { x: 10, y: 18, tx: 14, ty: 16, active: false }
+    { x: 11, y: 20, tx: 10, ty: 22, active: true }
   ],
   fauna: [
-    { type: "boto", sceneryIdx: 41, x: 12, y: 34, dir: 1 },
-    { type: "boto", sceneryIdx: 41, x: 28, y: 33, dir: -1 },
-    { type: "arara", sceneryIdx: 42, x: 14, y: 10, dir: 1 }
+    { type: "boto", sceneryIdx: 41, x: 16, y: 24, dir: 1 },
+    { type: "boto", sceneryIdx: 41, x: 28, y: 34, dir: -1 },
+    { type: "arara", sceneryIdx: 42, x: 8, y: 12, dir: 1 },
+    { type: "catamara", sceneryIdx: 40, x: 17, y: 22, dir: -1 }
   ]
 };
 
@@ -82,27 +87,49 @@ function initWorldMap() {
     const rowO = [];
     for (let x = 0; x < MAP_W; x++) {
       let t = 4; // Default lush grass
-      // Southern River Confluence (Meeting of the Waters: Y >= 31)
-      if (y >= 34) {
-        t = (x < 32) ? 0 : 1; // Tapajós turquoise on left, Amazon muddy on right
-      } else if (y >= 30) {
-        t = 3; // White sand beach margin
+
+      // Zone 1 (0..19): Curved Tapajós River Bay on the right side of the Ecobase (matching Image 2)
+      const riverCurveX = 14.8 + Math.sin(y * 0.24) * 1.8 + (y > 24 ? (24 - y) * 0.45 : 0);
+      if (x < 20) {
+        if (x >= riverCurveX + 1.1 || y >= 33) {
+          t = 0; // Deep Tapajós turquoise water
+        } else if (x >= riverCurveX - 0.3 || y >= 31) {
+          t = 3; // Sandy/earthy river bank shoreline
+        } else if (x >= 4 && x <= 13 && y >= 15 && y <= 24) {
+          t = 3; // Earthy Solarpunk Ecobase courtyard clearing
+        } else {
+          t = 4; // Lush forest grass around the clearing
+        }
       } else if (x >= 20 && x < 40) {
-        // Zone 2: Flooded Igapó with islands
-        const dIsland = Math.hypot(x - 30, y - 22);
-        if (dIsland < 5.5) {
-          t = 6; // Ancient Terra Preta island
-        } else if ((x + y) % 3 === 0 || y > 18) {
-          t = 2; // Shallow igapó water
+        // Zone 2: Flooded Igapó with organic winding channels & Terra Preta Archaeological Island (no checkerboard!)
+        const dIsland = Math.hypot(x - 30, y - 21);
+        const channelWave = Math.sin(x * 0.45 + y * 0.3) + Math.cos(x * 0.2 - y * 0.35);
+        if (y >= 34) {
+          t = (x < 32) ? 0 : 1; // Meeting of the Waters (Tapajós & Amazon)
+        } else if (y >= 32) {
+          t = 3;
+        } else if (dIsland < 5.2) {
+          t = 6; // Ancient Terra Preta archaeological mound
+        } else if (dIsland < 6.4) {
+          t = 4; // Lush island margin
+        } else if (channelWave > 0.35 && y >= 9 && y <= 30) {
+          t = 2; // Organic winding Igapó water channels
         } else {
           t = 4;
         }
-      } else if (x >= 40) {
+      } else {
         // Zone 3: Plateau & Burned Scar
-        if (x >= 46 && y >= 10 && y < 30) {
-          t = 5; // Degraded grey burned soil
+        if (y >= 34) {
+          t = 1; // Muddy Amazon River
+        } else if (y >= 32) {
+          t = 3;
         } else {
-          t = 4;
+          const dBurn = Math.hypot((x - 51) * 0.9, (y - 20) * 1.1);
+          if (dBurn < 7.8) {
+            t = 5; // Organic degraded grey burned scar
+          } else {
+            t = 4;
+          }
         }
       }
       rowT.push(t);
@@ -112,73 +139,112 @@ function initWorldMap() {
     state.objects.push(rowO);
   }
 
-  // Build initial Stilt Pier & Base platform in Zone 1 (X: 6..12, Y: 18..33)
-  for (let y = 18; y <= 23; y++) {
-    for (let x = 6; x <= 11; x++) {
+  // 1. Stilt House Platform (Top-Left of Ecobase Clearing: X 4..7, Y 15..17)
+  for (let y = 15; y <= 17; y++) {
+    for (let x = 4; x <= 7; x++) {
       state.baseGrid[y][x] = 7; // Wooden stilt floor
     }
   }
-  for (let y = 24; y <= 33; y++) {
-    state.baseGrid[y][8] = 7; // Pier to the river
+
+  // 2. Wooden Trapiche Pier extending into the Tapajós River (Bottom-Right of Clearing: X 12..16, Y 23..24)
+  for (let x = 12; x <= 16; x++) {
+    state.baseGrid[23][x] = 7;
+    state.baseGrid[24][x] = 7;
   }
 
-  // Initial Terra Preta beds near base
-  state.baseGrid[16][7] = 6;
-  state.baseGrid[16][8] = 6;
-  state.baseGrid[16][9] = 6;
-
-  // Place Base Structures & NPC in Zone 1
-  state.objects[18][7] = { kind: "world", type: "stilt_hut" };
-  state.objects[19][10] = { kind: "world", type: "elder_npc" };
-  state.objects[20][6] = { kind: "building", id: "bld_02", sceneryIdx: 28, name: "Forno Cerâmico de Pirólise" };
-
-  // Populate Zone 1 Natural Resources
-  const z1Spots = [
-    [3, 29, "clay_node"], [5, 30, "clay_node"], [12, 29, "clay_node"], [15, 30, "clay_node"],
-    [3, 12, "curua_node"], [5, 8, "curua_node"], [14, 9, "curua_node"], [17, 13, "curua_node"],
-    [4, 15, "urucum_node"], [13, 14, "urucum_node"],
-    [2, 6, "acai_tree"], [7, 5, "acai_tree"], [12, 6, "acai_tree"], [16, 7, "acai_tree"],
-    [11, 25, "charred_log"], [15, 22, "charred_log"]
+  // 3. Terracotta Irrigation Pipes & Lush Terra Preta Crop Beds (Bottom-Left of Clearing: X 3..8, Y 20..24)
+  // Pipe spine (tile 8) connecting Caryatid Condenser at (8,19) to the crop beds
+  const pipeCoords = [
+    [8, 19], [7, 19], [7, 20], [7, 21], [7, 22], [7, 23], [7, 24],
+    [4, 20], [4, 21], [4, 22], [4, 23], [4, 24],
+    [5, 22], [6, 22], [5, 24], [6, 24], [8, 24]
   ];
-  z1Spots.forEach(([x, y, type]) => { state.objects[y][x] = { kind: "world", type }; });
+  pipeCoords.forEach(([px, py]) => {
+    state.baseGrid[py][px] = 8; // Terracotta pipe & solar cable tile
+  });
 
-  // Populate Zone 2 (Igapó & Archaeological Site)
+  // Terra Preta agroforestry crop beds (X 3, 5..6, 8..9, Y 20..23)
+  const cropCoords = [
+    [3, 20], [3, 21], [3, 22], [3, 23],
+    [5, 20], [6, 20], [5, 21], [6, 21],
+    [5, 23], [6, 23],
+    [8, 20], [9, 20], [8, 21], [9, 21],
+    [8, 22], [9, 22], [8, 23], [9, 23]
+  ];
+  cropCoords.forEach(([cx, cy]) => {
+    state.baseGrid[cy][cx] = 6; // Terra Preta soil
+    state.objects[cy][cx] = { kind: "building", id: "bld_03", sceneryIdx: 29, name: "Canteiro de Terra Preta" };
+  });
+
+  // 4. Place Iconic Ecobase Structures matching Image 2
+  // Large Stilt House with Solar Roof
+  state.objects[16][6] = { kind: "world", type: "stilt_hut" };
+  // Left & Right Clay Pyrolysis Kilns with glowing hearth & rising smoke
+  state.objects[18][4] = { kind: "building", id: "bld_02", sceneryIdx: 28, name: "Forno Cerâmico de Pirólise" };
+  state.objects[16][8] = { kind: "building", id: "bld_02", sceneryIdx: 28, name: "Forno Cerâmico de Pirólise" };
+  // Central Glowing Caryatid Fog Condenser connected to the terracotta pipes
+  state.objects[19][8] = { kind: "building", id: "bld_07", sceneryIdx: 33, name: "Condensador de Neblina de Cariátides" };
+  // Solar Panel on Stilt House deck & Bio-Battery
+  state.objects[15][7] = { kind: "building", id: "bld_05", sceneryIdx: 31, name: "Painel Solar de Palafita" };
+  state.objects[17][5] = { kind: "building", id: "bld_06", sceneryIdx: 32, name: "Bio-Bateria Tapajônica" };
+  // Young saplings being irrigated by the Hummingbird Drone
+  state.objects[21][10] = { kind: "world", type: "curua_node" };
+  state.objects[22][10] = { kind: "world", type: "curua_node" };
+  state.objects[23][10] = { kind: "world", type: "curua_node" };
+  // Master Tapajó Artisan NPC near the pier
+  state.objects[22][12] = { kind: "world", type: "elder_npc" };
+
+  // 5. Dense Amazonian Forest Canopy Framing Zone 1 (Samaúmas, Açaizeiros, Andirobas, Urucum)
+  const z1Forest = [
+    // Giant Samaúma on the upper-right riverbank (exactly like Image 2!)
+    [12, 15, "samauma_tree"], [3, 13, "samauma_tree"], [9, 12, "samauma_tree"],
+    [2, 16, "andiroba_tree"], [2, 19, "acai_tree"], [2, 23, "andiroba_tree"], [2, 26, "samauma_tree"],
+    [5, 13, "acai_tree"], [7, 13, "andiroba_tree"], [11, 13, "acai_tree"], [13, 13, "urucum_node"],
+    [11, 16, "curua_node"], [13, 17, "urucum_node"],
+    [4, 26, "acai_tree"], [6, 26, "curua_node"], [9, 26, "andiroba_tree"],
+    [11, 28, "clay_node"], [13, 27, "clay_node"], [14, 29, "clay_node"],
+    [3, 9, "acai_tree"], [6, 8, "rubber_tree"], [10, 8, "samauma_tree"], [13, 9, "acai_tree"],
+    [4, 29, "charred_log"], [8, 29, "clay_node"]
+  ];
+  z1Forest.forEach(([x, y, type]) => {
+    if (!state.objects[y][x]) state.objects[y][x] = { kind: "world", type };
+  });
+
+  // 6. Populate Zone 2 (Igapó & Archaeological Site)
   const z2Spots = [
     [22, 14, "cauixi_node"], [25, 27, "cauixi_node"], [35, 26, "cauixi_node"], [37, 16, "cauixi_node"],
     [23, 7, "rubber_tree"], [27, 6, "rubber_tree"], [32, 7, "rubber_tree"], [36, 8, "rubber_tree"],
     [24, 12, "andiroba_tree"], [34, 12, "andiroba_tree"],
-    [29, 10, "samauma_tree"],
-    [28, 21, "shard_mound"], [32, 22, "shard_mound"], [27, 24, "shard_mound"],
-    [30, 22, "necked_vase"], [31, 20, "petroglyph"],
-    [23, 22, "water_lily"], [36, 23, "water_lily"],
-    [26, 31, "diesel_wreck"], [34, 30, "diesel_wreck"]
+    [29, 10, "samauma_tree"], [36, 13, "samauma_tree"],
+    [28, 21, "shard_mound"], [32, 22, "shard_mound"], [27, 23, "shard_mound"],
+    [30, 21, "necked_vase"], [31, 19, "petroglyph"],
+    [23, 22, "water_lily"], [35, 23, "water_lily"], [26, 16, "water_lily"],
+    [26, 30, "diesel_wreck"], [34, 29, "diesel_wreck"]
   ];
   z2Spots.forEach(([x, y, type]) => { state.objects[y][x] = { kind: "world", type }; });
 
-  // Populate Zone 3 (Plateau, Quartz/Jade Outcrop, Burned Scar & Caryatid Sanctuary)
+  // 7. Populate Zone 3 (Plateau, Quartz/Jade Outcrop, Burned Scar & Caryatid Sanctuary)
   const z3Spots = [
     [42, 8, "quartz_rock"], [43, 13, "quartz_rock"], [42, 18, "quartz_rock"],
     [43, 10, "jade_vein"], [44, 6, "jade_vein"],
-    [52, 5, "caryatid_altar"],
-    [48, 15, "charred_log"], [54, 16, "charred_log"], [49, 24, "charred_log"], [56, 22, "charred_log"],
-    [51, 20, "dredge_wreck"], [55, 26, "dredge_wreck"], [48, 28, "diesel_wreck"]
+    [52, 6, "caryatid_altar"], [46, 7, "samauma_tree"], [56, 8, "samauma_tree"],
+    [48, 15, "charred_log"], [54, 16, "charred_log"], [49, 24, "charred_log"], [55, 22, "charred_log"],
+    [51, 20, "dredge_wreck"], [54, 25, "dredge_wreck"], [48, 27, "diesel_wreck"]
   ];
   z3Spots.forEach(([x, y, type]) => { state.objects[y][x] = { kind: "world", type }; });
 }
 
-// Effective terrain taking into account 15-Day CHEIA vs 15-Day SECA water level shifts
+// Effective terrain taking into account 15-Day CHEIA vs 15-Day SECA water level shifts (smooth, no checkerboard)
 function getEffectiveTerrain(x, y) {
   const base = state.baseGrid[y][x];
   if (base === 6 || base === 7 || base === 8) return base; // Terra Preta, Stilt floor, and Pipes stay intact
 
   const isCheia = state.world.season === "CHEIA";
   if (isCheia) {
-    const floodLevel = (state.world.dayInSeason >= 4 && state.world.dayInSeason <= 12) ? 3 : 2;
-    if (y >= 34 - floodLevel && base === 3) return 0; // Beach submerged by Tapajós river
-    if (x >= 20 && x < 40 && base === 4 && (x + y) % 2 === 0 && y > 10) return 2; // Igapó expands
+    if (y >= 32 && base === 3 && x >= 18) return 0; // Lower riverbanks submerge in Cheia
   } else {
-    if (y >= 34 && y <= 35) return 3; // Extra beach exposed
-    if (base === 2 && (x + y) % 2 === 0) return 3; // Shallow channels dry into sandy mud
+    if (y === 33 && (base === 0 || base === 1)) return 3; // Extra white sand beach exposed in Seca
+    if (base === 2 && Math.sin(x * 0.5 + y * 0.4) < 0) return 3; // Shallow Igapó margins dry into sandy mud
   }
   return base;
 }
@@ -251,8 +317,8 @@ function recalculateEcoAndPower() {
   let genW = 0;
   let useW = 0;
   let maxWh = 85;
-  let hasDroneStation = false;
-  let droneStationPos = { x: 10, y: 18 };
+  let hasDroneStation = true; // Active in Ecobase prototype
+  let droneStationPos = { x: 11, y: 20 };
 
   const isDay = state.world.timeOfDay >= 6 && state.world.timeOfDay <= 18;
   const isSeca = state.world.season === "SECA";
@@ -263,7 +329,7 @@ function recalculateEcoAndPower() {
       if (obj && obj.kind === "building") {
         const b = BUILDINGS_DB.find(item => item.id === obj.id);
         if (b) {
-          buildEco += b.eco;
+          buildEco += (b.id === "bld_03" ? 1.5 : b.eco);
           if (b.storage) maxWh += b.storage;
           if (b.id === "bld_05" && isDay) {
             genW += isSeca ? 35 : 25;
@@ -289,14 +355,10 @@ function recalculateEcoAndPower() {
   state.world.gridPowerGen = genW;
   state.world.gridPowerUse = useW;
   state.drones[0].active = hasDroneStation;
-  if (hasDroneStation && state.drones[0].x === 10 && state.drones[0].y === 18) {
-    state.drones[0].x = droneStationPos.x;
-    state.drones[0].y = droneStationPos.y;
-  }
 
-  const rawEco = 25
+  const rawEco = 22
     + (state.world.recycledCount * 6)
-    + (state.world.terraPretaCount * 2)
+    + (state.world.terraPretaCount * 1.5)
     + (state.world.plantedTreesCount * 4)
     + buildEco
     + (state.world.unlockedTechs.length * 2);
@@ -310,7 +372,7 @@ function recalculateEcoAndPower() {
 function interactAtTile(tx, ty) {
   if (tx < 0 || tx >= MAP_W || ty < 0 || ty >= MAP_H) return;
   const dist = Math.hypot(tx - state.player.x, ty - state.player.y);
-  if (dist > 2.6) {
+  if (dist > 2.8) {
     stepPlayerToward(tx, ty);
     return;
   }
@@ -380,7 +442,7 @@ function interactAtTile(tx, ty) {
       return;
     }
     state.player.solarCharge = Math.max(0, state.player.solarCharge - 4);
-    state.player.scanningTicks = 15;
+    state.player.scanningTicks = 18;
     playSfx("scan");
 
     if (obj && obj.kind === "world") {
@@ -527,11 +589,10 @@ function advanceDay() {
     showToast(
       `Nova Estação: ${state.world.season} (15 Dias)`,
       state.world.season === "CHEIA"
-        ? "O Inverno Amazônico chegou! Os rios subiram 4 tiles e as microturbinas operam no máximo."
+        ? "O Inverno Amazônico chegou! Os rios subiram e as microturbinas operam no máximo."
         : "O Verão Amazônico (Vazante) começou! Praias e sítios arqueológicos surgiram, mas proteja o solo da seca!"
     );
   }
   logMsg(`Início do Dia ${state.world.dayInSeason}/15 da estação ${state.world.season}.`);
   updateAllUI();
 }
-

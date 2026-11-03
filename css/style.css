@@ -1,6 +1,9 @@
 :root {
-  --terracotta: #c65d3b;
-  --terracotta-dark: #7c331e;
+  --terracotta: #b85d38;
+  --terracotta-light: #d6764f;
+  --terracotta-dark: #6b3019;
+  --wood-bg: #4d2919;
+  --wood-slot: #3b1e12;
   --solar-gold: #f5c242;
   --tapajos-cyan: #2ed5c4;
   --forest-green: #3aa655;
@@ -38,6 +41,95 @@ body {
   object-fit: contain;
 }
 
+/* 16-Bit Wooden / Terracotta Pixel Frames (Matching Image 2 & Image 3) */
+.wood-frame {
+  background: linear-gradient(180deg, #9c5233 0%, #6e351e 100%);
+  border: 3px solid #2b1208;
+  box-shadow:
+    inset 0 2px 0 #d98862,
+    inset 0 -2px 0 #471e0e,
+    0 6px 18px rgba(0, 0, 0, 0.75);
+  border-radius: 6px;
+}
+
+.wood-hud-bar {
+  background: linear-gradient(180deg, #8c482b 0%, #5c2b17 100%);
+  border: 2.5px solid #240f07;
+  box-shadow:
+    inset 0 1.5px 0 #c97853,
+    inset 0 -1.5px 0 #3d190b,
+    0 4px 10px rgba(0, 0, 0, 0.65);
+  border-radius: 6px;
+}
+
+.wood-slot {
+  background: linear-gradient(180deg, #4f2515 0%, #38180d 100%);
+  border: 2px solid #240e06;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.65),
+    0 1px 0 #ba6f4c;
+  border-radius: 4px;
+  transition: all 0.12s ease;
+}
+
+.wood-slot:hover, .wood-slot.active-slot {
+  border-color: #f5c242;
+  box-shadow:
+    inset 0 0 8px rgba(245, 194, 66, 0.35),
+    0 0 8px rgba(245, 194, 66, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Tech Tree Circuit Parchment Background (Matching Image 3) */
+.tech-parchment {
+  background-color: #3f3832;
+  background-image:
+    radial-gradient(circle at 50% 45%, rgba(78, 70, 60, 0.85) 0%, rgba(42, 37, 33, 0.96) 100%),
+    repeating-linear-gradient(90deg, rgba(46, 213, 196, 0.04) 0px, rgba(46, 213, 196, 0.04) 1px, transparent 1px, transparent 48px),
+    repeating-linear-gradient(0deg, rgba(46, 213, 196, 0.04) 0px, rgba(46, 213, 196, 0.04) 1px, transparent 1px, transparent 48px);
+  border: 4px solid #6b361f;
+  box-shadow:
+    inset 0 0 0 3px #a85b39,
+    inset 0 0 36px rgba(0, 0, 0, 0.75),
+    0 14px 40px rgba(0, 0, 0, 0.85);
+}
+
+.tech-node-box {
+  width: 66px;
+  height: 66px;
+  background: linear-gradient(180deg, #593322 0%, #3b1f13 100%);
+  border: 3px solid #8c4f32;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.65),
+    0 4px 10px rgba(0, 0, 0, 0.6);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.15s ease;
+}
+
+.tech-node-box.unlocked {
+  border-color: #f5c242;
+  box-shadow:
+    inset 0 0 10px rgba(245, 194, 66, 0.35),
+    0 0 12px rgba(245, 194, 66, 0.45);
+}
+
+.tech-node-box.selected {
+  border-color: #56f5e1;
+  box-shadow:
+    0 0 0 2px #56f5e1,
+    0 0 18px rgba(86, 245, 225, 0.85);
+  transform: scale(1.06);
+}
+
+.tech-node-box.locked {
+  filter: grayscale(0.45) brightness(0.75);
+  border-color: #54463e;
+}
+
 .tapajo-border {
   border: 2px solid #c65d3b;
   box-shadow: inset 0 0 0 1px #f5c24255, 0 6px 20px rgba(0, 0, 0, 0.65);
@@ -73,8 +165,8 @@ body {
 }
 
 .sprite-icon-sm {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   image-rendering: pixelated;
   flex-shrink: 0;
   display: flex;
@@ -107,4 +199,3 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #f5c242;
 }
-
